@@ -1,3 +1,6 @@
+#Fichier pour mac à ignorer
+.DS_Store
+
 # Object files
 *.o
 *.ko

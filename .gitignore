@@ -1,5 +1,7 @@
 #Fichier pour mac à ignorer
 .DS_Store
+#dossier chelou
+.idea
 
 # Object files
 *.o

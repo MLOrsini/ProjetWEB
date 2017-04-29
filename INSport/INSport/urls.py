@@ -16,9 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from accueil.views import accueil
+from evenement.views import evenement
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',accueil)
+    url(r'^$',accueil),
+    url(r'^evenement/',evenement),
 
 ]

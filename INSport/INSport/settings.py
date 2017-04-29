@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'INSport.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':  'essai_db',
-        'USER':'flavien',
-        'PASSWORD':'flav',
+        'NAME':'essai_db',
+        'USER':'root',
+        'PASSWORD':'root',
         'HOST':'localhost',
         'PORT':'',
 

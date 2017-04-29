@@ -10,5 +10,6 @@ class Article(models.Model):
    contenu = models.TextField(null=True)
 
    date = models.DateTimeField(auto_now_add=True, auto_now=False,verbose_name="Date de parution")
+   
    def renvoie(self):
        print (self.titre + " , " + self.auteur)

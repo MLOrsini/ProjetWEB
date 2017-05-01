@@ -15,6 +15,14 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+#données statiques
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'deployment/collected_static/')
+
+#utile pour le stockage des photos
+MEDIA_ROOT = os.path.join(BASE_DIR, 'deployment/media/')
+
+#format pour la date
+DATE_INPUT_FORMATS = ('%d-%m-%Y')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -81,8 +89,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':'essai_db',
-        'USER':'root',
-        'PASSWORD':'root',
+        'USER':'flavien',
+        'PASSWORD':'flav',
         'HOST':'localhost',
         'PORT':'',
 

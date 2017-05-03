@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'swipe.apps.SwipeConfig',
     'evenement.apps.EvenementConfig',
     'profil.apps.ProfilConfig',
+    'tableaubord.apps.TableaubordConfig',
+    
 ]
 
 MIDDLEWARE = [

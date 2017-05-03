@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'evenement.apps.EvenementConfig',
     'profil.apps.ProfilConfig',
     'tableaubord.apps.TableaubordConfig',
-    
+
 ]
 
 MIDDLEWARE = [
@@ -91,8 +91,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':'essai_db',
-        'USER':'flavien',
-        'PASSWORD':'flav',
+        'USER':'admin',
+        'PASSWORD':'admin',
         'HOST':'localhost',
         'PORT':'',
 

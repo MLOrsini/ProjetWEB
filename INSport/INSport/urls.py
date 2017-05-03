@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^evenement/',include('evenement.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^tableaubord/', include('tableaubord.urls')),
+	url(r'^profil/', include('profil.urls')),
 ]

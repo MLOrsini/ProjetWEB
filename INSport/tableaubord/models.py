@@ -7,6 +7,7 @@ class Utilisateur(models.Model):
     nom= models.CharField(max_length=15)
     prenom= models.CharField(max_length=15)
     dateNaissance= models.DateField("Date de naissance",default=date.today)
+    photo = models.ImageField(upload_to="photos/",default='cat.jpg')
     sexe= models.CharField(max_length=6,
                            choices=(
                                     ('M', 'Male'),

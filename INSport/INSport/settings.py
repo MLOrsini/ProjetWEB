@@ -20,6 +20,7 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'deployment/collected_stat
 
 #utile pour le stockage des photos
 MEDIA_ROOT = os.path.join(BASE_DIR, 'deployment/media/')
+MEDIA_URL = '/media/'
 
 #format pour la date
 DATE_INPUT_FORMATS = ('%d-%m-%Y')

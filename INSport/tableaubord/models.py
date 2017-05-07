@@ -1,12 +1,12 @@
 #ici la base de donnée générale, utilisée par toutes les vues
 
 from django.db import models
-
+from datetime import datetime,date
 #Create your models here
 class Utilisateur(models.Model):
     nom= models.CharField(max_length=15)
     prenom= models.CharField(max_length=15)
-    #dateNaissance= models.DateField(input_formats=settings.DATE_INPUT_FORMATS)
+    dateNaissance= models.DateField("Date de naissance",default=date.today)
     sexe= models.CharField(max_length=6,
                            choices=(
                                     ('M', 'Male'),
@@ -23,8 +23,7 @@ class Sport(models.Model):
 
 class Evenement(models.Model):
     sports=models.ManyToManyField(Sport) #ManyToManyField permet relation plusieurs a plusieurs (ce qu'on veut ici, un evenement peut avoir +sieurs sport et un sport peut etre affilié a +sieurs evts)
-    #date=models.DateField(input_formats=settings.DATE_INPUT_FORMATS)
-    heure=  models.TimeField(auto_now=True, auto_now_add=False)
+    dateheure=  models.DateTimeField('Date/heure evenement ',default=datetime.now())
     createur=models.ForeignKey(Utilisateur, on_delete=models.CASCADE)
     nbPlaces= models.IntegerField()
     description= models.CharField(max_length=250)

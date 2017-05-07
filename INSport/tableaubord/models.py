@@ -15,7 +15,7 @@ class Utilisateur(models.Model):
                            )
     tel= models.CharField(max_length=12)#voir pour changer avec des forms (pour ne pas pouvoir mettre de num absurde)
     mail= models.CharField(max_length=50)
-    #photoProfil= models.ImageField(upload_to="photosProfil/")  #cf settings.py, on a défini comme racine de mediapath deploment/media
+    #photoProfil= models.ImageField(upload_to="photosProfil/",default="photosProfil/profil.jpeg")  #cf settings.py, on a défini comme racine de mediapath deploment/media
 
 class Sport(models.Model):
     #photoSport=  models.ImageField(upload_to="photosSport/")

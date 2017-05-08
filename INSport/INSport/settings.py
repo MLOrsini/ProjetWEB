@@ -15,8 +15,12 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-#données statiques
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'deployment/collected_static/')
+#donnEes statiques
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'deployment/static/')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
 
 #utile pour le stockage des photos
 MEDIA_ROOT = os.path.join(BASE_DIR, 'deployment/media/')

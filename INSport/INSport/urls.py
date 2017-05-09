@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    url(r'^$',include('accueil.urls')),
+    url(r'^$',include('accueil.urls'),name='home'),
     url(r'^evenement/',include('evenement.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^tableaubord/', include('tableaubord.urls')),

@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.tableaubord,name='tableaubord'),
-    url(r'^utils/$', views.utils,name='utils'),
+    url(r'^sign1/$', views.sign1,name='sign1'),
+url(r'^sign2/$', views.sign2,name='sign2'),
 ]

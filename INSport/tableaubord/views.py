@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from tableaubord.models import Evenement,Utilisateur
 from datetime import datetime
-from .forms import UtilisateurForm
+from .forms import UtilisateurForm,UserForm
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 def tableaubord(request):
@@ -14,26 +16,27 @@ def tableaubord(request):
 	return render(request,'tableaubord.html',{'evenements':evenements})
 
 
-def utils(request):
-    # Construire le formulaire, soit avec les données postées,
-    # soit vide si l'utilisateur accède pour la première fois
-    # à la page.
-	form = UtilisateurForm(request.POST or None,request.FILES)
-    # Nous vérifions que les données envoyées sont valides
-    # Cette méthode renvoie False s'il n'y a pas de données 
-    # dans le formulaire ou qu'il contient des erreurs.
-	if form.is_valid(): 
-        # Ici nous pouvons traiter les données du formulaire
-		form.save()
-		nom = form.cleaned_data['nom']
-		prenom = form.cleaned_data['prenom']
-		sexe = form.cleaned_data['sexe']
-		tel = form.cleaned_data['tel']
-		mail = form.cleaned_data['mail']
-		dateNaissance = form.cleaned_data['dateNaissance']
+def sign1(request):
+	form = UserForm(request.POST or None)
+	if form.is_valid() :
+		new_user = User.objects.create_user(**form.cleaned_data)
+		username = form.cleaned_data["username"]
+		password = form.cleaned_data["password"]
+		user = authenticate(username=username, password=password)
+		if user:
+			login(request, user)  # nous connectons l'utilisateur
+			return redirect('sign2')
+
+	return render(request, 'sign1.html',locals())
 
 
-	utilisateurs=Utilisateur.objects.all()
-    # Quoiqu'il arrive, on affiche la page du formulaire.
-	return render(request, 'utils.html', locals())
 
+
+def sign2(request):
+	user_form = UtilisateurForm(request.POST or None,request.FILES )
+	if user_form.is_valid() :
+		us = user_form.save(commit=False)
+		us.user=request.user;
+		us.save()
+
+	return render(request, 'sign2.html', locals())

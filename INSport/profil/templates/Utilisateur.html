@@ -1,0 +1,88 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Profil | INSport{% endblock title %}
+
+{% load static %}
+{% block bootstrapCSS %}
+<!-- Bootstrap Core CSS -->
+        <link href="{% static 'tableaubord/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+        
+        <link href="{% static 'tableaubord/custom.css' %}" rel="stylesheet">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Custom Fonts from Google -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+{% endblock bootstrapCSS %}
+
+{% block header %}
+
+
+<h1> Modifier Mon Profil </h1>
+<br>
+
+<!-- MODIFICATIONS INFOS PERSOS : -->
+<h3> Informations personnelles : </h3>
+<form action="{% url "Utilisateur" %}" method="post">
+	{% for field in form %}
+		{% if field.field.required %}
+			<span class="ast">*</span>
+		{% endif %} <label for="{{ field.auto_id }}">{{ field.label_tag }}
+	    <span class="formfield"> {% csrf_token %}{{field}}</span><br>
+	    </label>
+	{% endfor %}<br>
+	<input type="submit" class="btn btn-primary btn-lg" value="Update Profile" />
+</form> <br><br>
+
+
+
+<!-- MODIFICATIONS SPORTS DE ADHERENCE : -->
+<h3> Choisissez vos sports préférés : </h3>
+<form action="{% url "Utilisateur" %}" method="post">
+	{% for sport in sports %}
+   		<INPUT type="checkbox" value="{{ sport.id }}" > {{ sport.nom }}
+    {% endfor %}<br>
+	<br>
+	<input type="submit" class="btn btn-primary btn-lg" value="Update Sports" />
+</form>
+<br>
+
+
+<!-- 
+<h3> Adhérences : </h3>
+<form action="{% url "Utilisateur" %}" method="post">
+
+	{% for field in form2 %}
+	   {% if field.field.required %}
+		<span class="ast">*</span>
+	   {% endif %} <label for="{{ field.auto_id }}">{{ field.label_tag }}
+	    <span class="formfield"> {% csrf_token %}{{field}}</span><br>
+	    </label>
+	{% endfor %}<br>
+	
+	<input type="submit" class="btn btn-primary btn-lg" value="Update Adherence" />
+</form>
+<br><br>
+
+<h3> Sports : </h3>
+<form action="{% url "Utilisateur" %}" method="post">
+
+	{% for field in form3 %}
+	   {% if field.field.required %}
+		<span class="ast">*</span>
+	   {% endif %} <label for="{{ field.auto_id }}">{{ field.label_tag }}
+	    <span class="formfield"> {% csrf_token %}{{field}}</span><br>
+	    </label><br>
+	{% endfor %}<br>
+	
+	<input type="submit" class="btn btn-primary btn-lg" value="Update Sport" />
+</form> -->
+
+
+
+{% endblock header %}

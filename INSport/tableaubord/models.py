@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.db import models
 from datetime import datetime,date
 
 #Create your models here
@@ -45,9 +46,17 @@ class Evenement(models.Model):
     #photoEvt=models.ImageField(upload_to="photosEvt/")
 
 class Adherence(models.Model):
-    adherent=models.ForeignKey(Utilisateur, on_delete=models.CASCADE)
+    adherent=models.ForeignKey(User, on_delete=models.CASCADE)
     sport=models.ForeignKey(Sport, on_delete=models.CASCADE)
 
-class Participation:
-    participant=models.ForeignKey(Utilisateur, on_delete=models.CASCADE)
+class Participation(models.Model):
+    participant=models.ForeignKey(User, on_delete=models.CASCADE)
     evenement= models.ForeignKey(Evenement, on_delete=models.CASCADE)
+    participe=models.CharField(max_length=8,
+    							choices=(
+    								('-1','pas croise'),
+    								('0','Oui'),
+    								('1','Non'),
+    								),
+    							default='-1'
+    	)

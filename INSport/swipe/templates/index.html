@@ -1,0 +1,70 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Log In | INSport{% endblock title %}
+
+
+{% block bootstrapCSS %}
+{% load static %}
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'tableaubord/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+    <link href="{% static 'tableaubord/custom.css' %}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+{% endblock bootstrapCSS %}
+   
+{% block header %}
+        <table ><font size="66" weight="50">L O G  I N</font></table>
+	 
+        <div class="header-content-inner">
+           <table class="row" width="600px" ></table>
+	         <section class="overlay" style=" height=400px;" width="20%">
+        <div class="overlay" style=" width=200px;" width="20%">
+       <table style="width:100%;
+    height:100%;" align="center">
+        <tbody><tr align="center">
+            <td align="center">
+                
+            </td>
+            <td align="center">
+                <div type="text" align="center" style="width:400px ; height:400px;background-color:rgba(255,255,255,0.3);">
+
+  {% if context  %}
+<p>
+        <img alt="" src="./INSPORT - Sign Up_files/Little_island_colour_logo_200x200.jpg" style="height: 200px; width: 200px" id="imgClickAndChange">
+  
+</p>
+
+
+  <div class="name">
+    {{ context.description }}
+  </div>
+  
+ 
+
+
+
+</div>
+            </td>
+            <td align="center">
+                
+            </td></tr><tr align="center"></tr></tbody></table><table align="center"><tbody><tr><td align="left" style="width=50%; margin:auto;">
+<a href="{% url "nice" event_id=context.id %}" class="btn btn-primary btn-lg" >OUI</a>
+</td><td align="right">
+<a href="{% url "nope" event_id=context.id %}" class="btn btn-primary btn-lg">NON </a>
+</td>
+</tr><tr> {% else %}
+  Wait for more people to join!
+  {% endif %}</tr></tbody></table>
+        
+            </div>
+        </section></div>
+    
+{% endblock header %}

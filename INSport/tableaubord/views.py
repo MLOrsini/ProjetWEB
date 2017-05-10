@@ -24,7 +24,7 @@ def sign1(request):
 		user = authenticate(username=username, password=password)
 		if user:
 			login(request, user)  # nous connectons l'utilisateur
-			return redirect('sign2')
+			return redirect('Uilisateur')
 
 	return render(request, 'sign1.html',locals())
 

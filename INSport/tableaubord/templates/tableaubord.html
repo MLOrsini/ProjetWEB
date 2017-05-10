@@ -2,10 +2,11 @@
 
 {% block content %}
 <p>Bonjour voici la page tableau de bord</p>
+{{request.user.username}}
 {% for evenement in evenements %}
-
-    <p>{{ evenement.description }} date:{{evenement.dateheure}} </p>
-
+    {% if evenement.createur.username == request.user.username %}
+      <p>{{ evenement.description }} date:{{evenement.dateheure}} </p>
+    {% endif %}
 {% empty %}
 
     <p class="empty">Pas d'événement créé pour le moment.</p>

@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.db import models
 from datetime import datetime,date
+
 #Create your models here
 class Utilisateur(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE,default='',related_name='profile')

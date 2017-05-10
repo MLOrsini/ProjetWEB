@@ -1,14 +1,33 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<!-- En-tête de la page -->
-	<meta charset="utf-8">
-	<title>INSport</title>
-</head>
+<html lang="en">
+{% load static %}
+	<head>
+		<!-- En-tête de la page -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{% block title %}INSport{% endblock %}</title>
 
-<body>
-	<!-- Corps de la page -->
-	{% block content %}{% endblock %}
-</body>
+		{% block bootstrapCSS %}{% endblock %}
 
+	</head>
+
+	<body>
+		<!-- Corps de la page -->
+		{% include 'layouts/_nav.html' %}
+		{% block content %}{% endblock %}
+		{% include 'layouts/_footer.html' %}
+	    
+	    <!-- jQuery -->
+    	<script src="{% static 'accueil/jquery-1.11.3.min.js' %}"></script>
+
+    	<!-- Bootstrap Core JavaScript -->
+    	<script src="{% static 'accueil/bootstrap.min.js' %}"></script>
+
+    	<!-- Plugin JavaScript -->
+    	<script src="{% static 'accueil/jquery.easing.min.js' %}"></script>
+    
+    	<!-- Custom Javascript -->
+    	<script src="{% static 'accueil/custom.js' %}"></script>
+	</body>
 </html>

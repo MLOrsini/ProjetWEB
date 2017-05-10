@@ -1,5 +1,7 @@
 {% extends 'layouts/base.html' %}
 
+{% block title %}Tableau de bord | INSport{% endblock title %}
+
 {% block content %}
 <p>Bonjour voici la page tableau de bord</p>
 {% for evenement in evenements %}
@@ -11,5 +13,4 @@
     <p class="empty">Pas d'événement créé pour le moment.</p>
 
 {% endfor %}
-
 {% endblock content %}

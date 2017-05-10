@@ -22,6 +22,8 @@ urlpatterns = [
     url(r'^$',include('accueil.urls'),name='home'),
     url(r'^evenement/',include('evenement.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^logout/', include('logout.urls'),name='logout'),
+    url(r'^login/', include('login.urls'),name='login'),
     url(r'^tableaubord/', include('tableaubord.urls')),
 	url(r'^profil/', include('profil.urls')),
 

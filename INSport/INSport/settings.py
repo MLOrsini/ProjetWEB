@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'evenement.apps.EvenementConfig',
     'profil.apps.ProfilConfig',
     'tableaubord.apps.TableaubordConfig',
+    'login.apps.LoginConfig',
 
 ]
 
@@ -124,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+AUTH_PROFILE_MODULE = 'tableaubord.Utilisateur'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

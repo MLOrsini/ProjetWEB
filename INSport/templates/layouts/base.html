@@ -12,10 +12,26 @@
 
 	</head>
 
-	<body>
-		<!-- Corps de la page -->
+	<body> <!-- Corps de la page -->
+
+		<!-- Barre de navigation -->
 		{% include 'layouts/_nav.html' %}
-		{% block content %}{% endblock %}
+
+		<!-- Header -->
+    	<header>
+        	<div class="header-content">
+            	<div class="header-content-inner">
+                	<!-- <table class="row" height="600px"></table> -->
+                	<!-- Contenu de la page -->
+                	{% block header %}{% endblock %}
+            	</div>
+        	</div>
+    	</header>
+
+    	<!-- Section -->
+		{% block section %}{% endblock %}
+
+    	<!-- Pied de page -->
 		{% include 'layouts/_footer.html' %}
 	    
 	    <!-- jQuery -->

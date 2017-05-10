@@ -2,16 +2,39 @@
 
 {% block title %}Tableau de bord | INSport{% endblock title %}
 
-{% block content %}
-<p>Bonjour voici la page tableau de bord</p>
-{{request.user.username}}
-{% for evenement in evenements %}
-    {% if evenement.createur.username == request.user.username %}
-      <p>{{ evenement.description }} date:{{evenement.dateheure}} </p>
-    {% endif %}
-{% empty %}
+{% load static %}
+{% block bootstrapCSS %}
+<!-- Bootstrap Core CSS -->
+        <link href="{% static 'tableaubord/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+        
+        <link href="{% static 'tableaubord/custom.css' %}" rel="stylesheet">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
-    <p class="empty">Pas d'événement créé pour le moment.</p>
+        <!-- Custom Fonts from Google -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-{% endfor %}
-{% endblock content %}
+{% endblock bootstrapCSS %}
+
+{% block header %}
+<h1>Bonjour voici la page tableau de bord</h1>
+{% endblock header %}
+
+{% block section %}
+<section class="intro">
+ <h2>{{request.user.username}}</h2>
+	{% for evenement in evenements %}
+    			{% if evenement.createur.username == request.user.username %}
+      				<p class="text-light">{{ evenement.description }} date:{{evenement.dateheure}} </p>
+    			{% endif %}
+				{% empty %}
+					<p class="empty">Pas d'événement créé pour le moment.</p>
+	{% endfor %}
+</section>
+{% endblock section %}
+

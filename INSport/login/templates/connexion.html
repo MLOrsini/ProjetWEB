@@ -38,12 +38,17 @@
 	{% if user.is_authenticated %}
 	Vous êtes connecté, {{ user.username }} !
 	{% else %}
-	<form method="post" action="." ><font color="black">
-	    {% csrf_token %}
-	    {{ form.as_p }}
-	</font>
+		 <form method="post" class="a"  action=".">
 
-	    <input type="submit" class="btn btn-primary btn-lg" value="LOG IN" />
+	{% for field in form %}
+
+	<label for="{{ field.auto_id }}">{{ field.label_tag }}
+	    <span class="formfield"> {% csrf_token %}{{field}}</span><br>
+	    </label><br>
+	{% endfor %}<br>
+	
+
+	    <input type="submit" class="btn btn-primary btn-lg" value="Update Profile" />
 	</form>
 	{% endif %}
 </p>

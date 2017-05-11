@@ -101,7 +101,6 @@ h.required:after { content: '*'}
     margin-bottom: 20px;
 }
 
-
 .intro {
 	color: #fff;
     background-color: #9933ff;
@@ -461,4 +460,3 @@ textarea {
     background-color: rgba(248,248,248,0.5);
     resize: none;
 }
-

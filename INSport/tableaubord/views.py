@@ -24,18 +24,8 @@ def sign1(request):
 		user = authenticate(username=username, password=password)
 		if user:
 			login(request, user)  # nous connectons l'utilisateur
-			return redirect('Uilisateur')
+			return redirect('Utilisateur')
 
 	return render(request, 'sign1.html',locals())
 
 
-
-
-def sign2(request):
-	user_form = UtilisateurForm(request.POST or None,request.FILES )
-	if user_form.is_valid() :
-		us = user_form.save(commit=False)
-		us.user=request.user;
-		us.save()
-
-	return render(request, 'sign2.html', locals())

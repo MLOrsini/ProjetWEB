@@ -25,20 +25,20 @@
 	 
         <div class="header-content-inner">
            <table class="row" width="600px" ></table>
+	
 	         <section class="overlay" style=" height=400px;" width="20%">
         <div class="overlay" style=" width=200px;" width="20%">
-       <table style="width:100%;
-    height:100%;" align="center">
+       <table style="width:400px ; height:400px;border-color: red;background-color:rgba(0,0,0,0.4);border-radius: 50px 0px 50px 0px;box-shadow: 1px 1px 10px #444; " align="center">
         <tbody><tr align="center">
             <td align="center">
                 
             </td>
             <td align="center">
-                <div type="text" align="center" style="width:400px ; height:400px;background-color:rgba(255,255,255,0.3);">
+               
 
   {% if context  %}
 <p>
-        <img alt="" src="./INSPORT - Sign Up_files/Little_island_colour_logo_200x200.jpg" style="height: 200px; width: 200px" id="imgClickAndChange">
+        <img alt="" src"" style="height: 200px; width: 200px" id="imgClickAndChange">
   
 </p>
 
@@ -55,10 +55,10 @@
             </td>
             <td align="center">
                 
-            </td></tr><tr align="center"></tr></tbody></table><table align="center"><tbody><tr><td align="left" style="width=50%; margin:auto;">
-<a href="{% url "nice" event_id=context.id %}" class="btn btn-primary btn-lg" >OUI</a>
-</td><td align="right">
-<a href="{% url "nope" event_id=context.id %}" class="btn btn-primary btn-lg">NON </a>
+            </td></tr><tr align="center" height="10%"></tr></tbody></table><br><br><table align="center" width="400px" style="border-radius=20px;"><tbody><tr><td align="left" style="width=50%; margin-left: 20px;">
+<a href="{% url 'nice' event_id=context.id %}" style="height: 100px;padding: 25px 20px; border-radius: 500px;background-color:rgba(0,0,0,0.4); box-shadow: 1px 1px 10px #333; "  ><img src="{% static 'swipe/flex.png' %}"/></a>
+</td><td width="50%"></td><td align="right">
+<a href="{% url 'nope' event_id=context.id %}" style="height: 100px;padding: 25px 20px; border-radius: 500px;background-color:rgba(0,0,0,0.4);box-shadow: 1px 1px 10px #333; "  ><img src="{% static 'swipe/sofa.png' %}"/></a>
 </td>
 </tr><tr> {% else %}
   Wait for more people to join!

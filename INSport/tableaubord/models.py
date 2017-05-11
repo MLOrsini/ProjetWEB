@@ -37,7 +37,7 @@ class Sport(models.Model):
     nom= models.CharField(max_length=20)
 
 class Evenement(models.Model):
-    sports=models.ManyToManyField(Sport) #ManyToManyField permet relation plusieurs a plusieurs (ce qu'on veut ici, un evenement peut avoir +sieurs sport et un sport peut etre affilie a +sieurs evts)
+    sports=models.ForeignKey(Sport, on_delete=models.CASCADE,default=None) #ManyToManyField permet relation plusieurs a plusieurs (ce qu'on veut ici, un evenement peut avoir +sieurs sport et un sport peut etre affilie a +sieurs evts)
     dateheure=  models.DateTimeField('Date/heure evenement ',default=datetime.now())
     createur=models.ForeignKey(User, on_delete=models.CASCADE)
     nbPlaces= models.IntegerField()

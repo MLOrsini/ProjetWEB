@@ -7,15 +7,16 @@ from . import models
 
 @login_required
 def index(request):
- 
+
+
     try:
-        context=Evenement.objects.raw('SELECT tableaubord_evenement.id,tableaubord_evenement.description FROM tableaubord_evenement INNER JOIN tableaubord_participation ON tableaubord_evenement.id = tableaubord_participation.evenement_id WHERE tableaubord_participation.participant_id=%s AND tableaubord_participation.participe=-1;',(request.user.id,))[0]
-        try:
-            context=context.objects.raw('SELECT tableaubord_evenement.id,tableaubord_evenement.description FROM tableaubord_evenement INNER JOIN tableaubord_adherence ON tableaubord_evenement.sports_id = tableaubord_adherence.sport_id WHERE tableaubord_adherence.adherent_id=%s AND tableaubord_evenement.sports_id=tableaubord_adherence.sport_id;',(request.user.id,))[0]
-        except:
-            context
+        context=Evenement.objects.raw('SELECT tableaubord_evenement.id,tableaubord_evenement.description FROM tableaubord_evenement INNER JOIN tableaubord_adherence ON tableaubord_evenement.sports_id = tableaubord_adherence.sport_id INNER JOIN tableaubord_participation ON tableaubord_evenement.id = tableaubord_participation.evenement_id WHERE tableaubord_adherence.adherent_id=%s AND tableaubord_evenement.sports_id=tableaubord_adherence.sport_id AND tableaubord_participation.participe=-1; ',(request.user.id,))[0]
+
     except IndexError:
-        context= None
+        try:
+            context=Evenement.objects.raw('SELECT tableaubord_evenement.id,tableaubord_evenement.description FROM tableaubord_evenement INNER JOIN tableaubord_participation ON tableaubord_evenement.id = tableaubord_participation.evenement_id WHERE tableaubord_participation.participant_id=%s AND tableaubord_participation.participe=-1;',(request.user.id,))[0]
+        except :
+            context= None
 
     return render(request, 'index.html',{'context': context})
 

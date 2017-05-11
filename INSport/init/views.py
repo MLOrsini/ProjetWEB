@@ -9,50 +9,81 @@ def init(request):
 	for sport in sports:
 		sport.delete()
 
-	cap=Sport(nom="Course a pied",photo='photoSports/running.png')
+	cap=Sport(id="1")
+	cap.nom="Course à pied"
+	cap.photo='photoSports/running.png'
 	cap.save()
 
-	nat=Sport(nom="Natation",photo='photoSports/nat.png')
+	nat=Sport(id="2")
+	nat.nom="Natation"
+	nat.photo='photoSports/nat.png'
 	nat.save()
 
-	muscu=Sport(nom="Musculation",photo='photoSports/muscu.png')
+	muscu=Sport(id="3")
+	muscu.nom="Musculation"
+	muscu.photo='photoSports/muscu.png'
 	muscu.save()
 
-	velo=Sport(nom="Vélo",photo='photoSports/velo.png')
+	velo=Sport(id="4")
+	velo.nom="Vélo"
+	velo.photo='photoSports/velo.png'
 	velo.save()
 
-	tennis=Sport(nom="Tennis",photo='photoSports/tennis.png')
+	tennis=Sport(id="5")
+	tennis.nom="Tennis"
+	tennis.photo='photoSports/tennis.png'
 	tennis.save()
 
-	pingpong=Sport(nom="Tennis de table",photo='photoSports/ping-pong.png')
+	pingpong=Sport(id="6")
+	pingpong.nom="Tennis de table"
+	pingpong.photo='photoSports/ping-pong.png'
 	pingpong.save()
 
-	arc=Sport(nom="Tir a l'arc",photo='photoSports/archery.png')
+	arc=Sport(id="7")
+	arc.nom="Tir à l'arc"
+	arc.photo='photoSports/archery.png'
 	arc.save()
 
-	foot=Sport(nom="Football",photo='photoSports/football.png')
+	foot=Sport(id="8")
+	foot.nom="Football"
+	foot.photo='photoSports/football.png'
 	foot.save()
 
-	rugby=Sport(nom="Rugby",photo='photoSports/rugby.png')
+	rugby=Sport(id="9")
+	rugby.nom="Rugby"
+	rugby.photo='photoSports/rugby.png'
 	rugby.save()
 
-	grimpe=Sport(nom="Escalade",photo='photoSports/escalade.png')
+	grimpe=Sport(id="10")
+	grimpe.nom="Escalade"
+	grimpe.photo='photoSports/escalade.png'
 	grimpe.save()
 
-	wtf=Sport(nom="Sports de combat",photo='photoSports/boxing.png')
+	wtf=Sport(id="11")
+	wtf.nom="Sports de combat"
+	wtf.photo='photoSports/boxing.png'
 	wtf.save()
 
-	squash=Sport(nom="Squash",photo='photoSports/squash.png')
+	squash=Sport(id="12")
+	squash.nom="Squash"
+	squash.photo='photoSports/squash.png'
 	squash.save()
 
-	bad=Sport(nom="Badminton",photo='photoSports/bad.png')
+	bad=Sport(id="13")
+	bad.nom="Badminton"
+	bad.photo='photoSports/bad.png'
 	bad.save()
 
-	curling=Sport(nom="Curling",photo='photoSports/curling.png')
+	curling=Sport(id="14")
+	curling.nom="Curling"
+	curling.photo='photoSports/curling.png'
 	curling.save()
 
-	volley=Sport(nom="Volleyball",photo='photoSports/volleyball.png')
+	volley=Sport(id="15")
+	volley.nom="Volleyball"
+	volley.photo='photoSports/volleyball.png'
 	volley.save()
+
 
 	sports=Sport.objects.all()
 	return render(request, 'init.html',{'sports':sports})

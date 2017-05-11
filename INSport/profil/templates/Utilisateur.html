@@ -32,19 +32,22 @@
 
 <form method="post"  action="{% url 'Utilisateur' %}" class="a">
     {% for field in form %}
-   
+   	<!-- Mettre '*' quand champ requis -->
 	<label for="{{ field.auto_id }}">{% if field.field.required %}
 		<span class="ast">*</span>
 	   {% endif %}<span class="f" style="color: #aaa; font-size:18px ;font-weight: normal !important;"> {{ field.label_tag }}</span>
-	<span style="color: #444;""> {% csrf_token %}{{field}}</span><br><br>
+	<span style="color: #444;""> {% csrf_token %}{{field}}</span><br>
 	</label><br>
 	{% endfor %}
 
-    <br><input type="submit" class="btn btn-primary btn-lg" value="Sign Up !" />
+    <br><input type="submit" class="btn btn-primary btn-lg" value="Update Profile !" />
     </form><br><br>
 
 </td><td width="20%"></td>
-<td align="right" >
+
+
+<td align="right" > 
+
 <!-- MODIFICATIONS SPORTS DE ADHERENCE : -->
 <h3> Choisissez vos sports préférés : </h3>
 <form action="{% url 'Utilisateur' %}" method="post">
@@ -56,6 +59,7 @@
 </form>
 <br>
 <br>
+<!-- Boutons delete et view -->
 <a href="" class="btn btn-lg"style="
     color: #fff;
     background-color: red;

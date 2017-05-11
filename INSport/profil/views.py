@@ -8,7 +8,7 @@ def Utilisateur(request):
 	utilisateur=request.user.profile
 	sports=Sport.objects.all()
 
-	form = UserForm(request.POST)  
+	form = UserForm(request.POST,request.FILES)  
 	if form.is_valid():
 		form.save() 
 

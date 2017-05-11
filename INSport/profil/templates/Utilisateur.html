@@ -23,35 +23,53 @@
 {% block header %}
 
 
-<h1> Modifier Mon Profil </h1>
+<h1> Modifier mon profil </h1>
 <br>
 
 <!-- MODIFICATIONS INFOS PERSOS : -->
+<table width="90%"><tr><td>
 <h3> Informations personnelles : </h3>
-<form action="{% url "Utilisateur" %}" method="post">
-	{% for field in form %}
-		{% if field.field.required %}
-			<span class="ast">*</span>
-		{% endif %} <label for="{{ field.auto_id }}">{{ field.label_tag }}
-	    <span class="formfield"> {% csrf_token %}{{field}}</span><br>
-	    </label>
-	{% endfor %}<br>
-	<input type="submit" class="btn btn-primary btn-lg" value="Update Profile" />
-</form> <br><br>
 
+<form method="post"  action="{% url 'Utilisateur' %}" class="a">
+    {% for field in form %}
+   
+	<label for="{{ field.auto_id }}">{% if field.field.required %}
+		<span class="ast">*</span>
+	   {% endif %}<span class="f" style="color: #aaa; font-size:18px ;font-weight: normal !important;"> {{ field.label_tag }}</span>
+	<span > {% csrf_token %}{{field}}</span><br><br>
+	</label><br>
+	{% endfor %}
 
+    <br><input type="submit" class="btn btn-primary btn-lg" value="Sign Up !" />
+    </form><br><br>
 
+</td><td width="10%"></td>
+<td align="right" >
 <!-- MODIFICATIONS SPORTS DE ADHERENCE : -->
 <h3> Choisissez vos sports préférés : </h3>
-<form action="{% url "Utilisateur" %}" method="post">
+<form action="{% url 'Utilisateur' %}" method="post">
 	{% for sport in sports %}
-   		<INPUT type="checkbox" value="{{ sport.id }}" > {{ sport.nom }}
+   		 <span style="white-space:nowrap; ">{{ sport.nom }} <input type="checkbox" value="{{ sport.id }}" ></span>
     {% endfor %}<br>
 	<br>
 	<input type="submit" class="btn btn-primary btn-lg" value="Update Sports" />
 </form>
 <br>
+<br>
+<a href="" class="btn btn-lg"style="
+    color: #fff;
+    background-color: red;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;"  >DELETE X</a>   <a href="/profil/monProfil" class="btn btn-lg"style="
+    color: #fff;
+    background-color: #6D19C1;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;"  >View </a>
+</td></tr></table>
 
+</td><td width="50%"></td><td align="right">
 
 <!-- 
 <h3> Adhérences : </h3>

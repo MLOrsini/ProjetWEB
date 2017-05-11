@@ -2,9 +2,10 @@ from django import forms
 from tableaubord.models import Utilisateur, Adherence, Sport
 
 class UserForm(forms.ModelForm):
-    class Meta:
-        model = Utilisateur
-        fields = '__all__'
+	required_css_class = 'required'
+	class Meta:
+		model = Utilisateur
+		exclude = ('user',) 
 
 class AdherenceForm(forms.ModelForm):
     class Meta:

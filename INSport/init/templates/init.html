@@ -1,0 +1,8 @@
+<p>Les sports ont ete crees</p>
+
+Liste des sports:
+
+{%for sport in sports%}
+	<h1>{{sport.nom}} </h1>
+	<img src="{{sport.photo.url}}">
+{%endfor%}

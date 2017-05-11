@@ -9,10 +9,10 @@ def init(request):
 	for sport in sports:
 		sport.delete()
 
-	cap=Sport(nom="Course a pied")
+	cap=Sport(nom="Course a pied",photo='photoSports/running.png')
 	cap.save()
 
-	nat=Sport(nom="Natation",photo='photoSports/nat.jpeg')
+	nat=Sport(nom="Natation",photo='photoSports/nat.png')
 	nat.save()
 
 	muscu=Sport(nom="Musculation",photo='photoSports/muscu.png')
@@ -24,13 +24,13 @@ def init(request):
 	tennis=Sport(nom="Tennis",photo='photoSports/tennis.png')
 	tennis.save()
 
-	pingpong=Sport(nom="Tennis de table",photo='photoSports/pingpong.jpeg')
+	pingpong=Sport(nom="Tennis de table",photo='photoSports/ping-pong.png')
 	pingpong.save()
 
-	arc=Sport(nom="Tir a l'arc",photo='photoSports/arc.jpeg')
+	arc=Sport(nom="Tir a l'arc",photo='photoSports/archery.png')
 	arc.save()
 
-	foot=Sport(nom="Football",photo='photoSports/foot.png')
+	foot=Sport(nom="Football",photo='photoSports/football.png')
 	foot.save()
 
 	rugby=Sport(nom="Rugby",photo='photoSports/rugby.png')
@@ -39,19 +39,19 @@ def init(request):
 	grimpe=Sport(nom="Escalade",photo='photoSports/escalade.png')
 	grimpe.save()
 
-	wtf=Sport(nom="Sports de combat",photo='photoSports/wtf.png')
+	wtf=Sport(nom="Sports de combat",photo='photoSports/boxing.png')
 	wtf.save()
 
 	squash=Sport(nom="Squash",photo='photoSports/squash.png')
 	squash.save()
 
-	bad=Sport(nom="Badminton",photo='photoSports/bad.jpeg')
+	bad=Sport(nom="Badminton",photo='photoSports/bad.png')
 	bad.save()
 
 	curling=Sport(nom="Curling",photo='photoSports/curling.png')
 	curling.save()
 
-	volley=Sport(nom="Volleyball",photo='photoSports/volley.png')
+	volley=Sport(nom="Volleyball",photo='photoSports/volleyball.png')
 	volley.save()
 
 	sports=Sport.objects.all()

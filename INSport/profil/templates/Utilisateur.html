@@ -36,14 +36,14 @@
 	<label for="{{ field.auto_id }}">{% if field.field.required %}
 		<span class="ast">*</span>
 	   {% endif %}<span class="f" style="color: #aaa; font-size:18px ;font-weight: normal !important;"> {{ field.label_tag }}</span>
-	<span > {% csrf_token %}{{field}}</span><br><br>
+	<span style="color: #444;""> {% csrf_token %}{{field}}</span><br><br>
 	</label><br>
 	{% endfor %}
 
     <br><input type="submit" class="btn btn-primary btn-lg" value="Sign Up !" />
     </form><br><br>
 
-</td><td width="10%"></td>
+</td><td width="20%"></td>
 <td align="right" >
 <!-- MODIFICATIONS SPORTS DE ADHERENCE : -->
 <h3> Choisissez vos sports préférés : </h3>

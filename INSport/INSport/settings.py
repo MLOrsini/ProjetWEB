@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'profil.apps.ProfilConfig',
     'tableaubord.apps.TableaubordConfig',
     'login.apps.LoginConfig',
+    'init.apps.InitConfig',
 
 ]
 

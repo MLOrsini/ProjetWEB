@@ -20,7 +20,6 @@ class Utilisateur(models.Model):
 	tel= models.CharField(max_length=12)#voir pour changer avec des forms (pour ne pas pouvoir mettre de num absurde)
 	def __str__(self):
         	return "Profil de {0}".format(self.user.username)
-    #photoProfil= models.ImageField(upload_to="photosProfil/",default="photosProfil/profil.jpeg")  #cf settings.py, on a defini comme racine de mediapath deploment/media
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -34,7 +33,7 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 class Sport(models.Model):
-    #photoSport=  models.ImageField(upload_to="photosSport/")
+    photo = models.ImageField(upload_to="photoSports/",default='photoSports/cap.jpeg')
     nom= models.CharField(max_length=20)
 
 class Evenement(models.Model):

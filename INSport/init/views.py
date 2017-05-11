@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from tableaubord.models import Sport
+from tableaubord.models import Sport,Evenement,Participation,User
 # Create your views here.
 
 def init(request):
-
+	ev=Evenement.objects.all()
+	user=User.objects.all()
+	p=Participation.objects.all()
 	#en premier lieu on clean
 	sports=Sport.objects.all()
 	for sport in sports:
@@ -83,6 +85,25 @@ def init(request):
 	volley.nom="Volleyball"
 	volley.photo='photoSports/volleyball.png'
 	volley.save()
+
+#initialise quelques evenements : 
+	ev1=Evenement(description="evenement bsquash",createur=User.objects.get(id=1),nbPlaces=12,sports=Sport.objects.get(id=12))
+	ev1.save();
+	ev2=Evenement(description="evenement rugby",createur=User.objects.get(id=1),nbPlaces=12,sports=Sport.objects.get(id=9))
+	ev2.save()
+	ev3=Evenement(description="evenement velo",createur=User.objects.get(id=1),nbPlaces=12,sports=Sport.objects.get(id=4))
+	ev3.save()
+	ev4=Evenement(description="evenement badinton",createur=User.objects.get(id=1),nbPlaces=12,sports=Sport.objects.get(id=13))
+	ev4.save()
+
+
+
+# Initialise participation à -1 pour tous les événements pour tous les participants
+	for e in ev:
+		for u in user:
+			p=Participation(participant=u,evenement=e,participe='-1')
+			p.save()
+
 
 
 	sports=Sport.objects.all()

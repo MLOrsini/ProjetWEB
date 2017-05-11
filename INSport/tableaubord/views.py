@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from tableaubord.models import Evenement,Utilisateur
+from tableaubord.models import Evenement,Utilisateur, Sport
 from datetime import datetime
 from .forms import UtilisateurForm,UserForm
 from django.contrib.auth.models import User
@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login
 # Create your views here.
 def tableaubord(request):
 	exuser=request.user
-	exemple=Evenement( nbPlaces=5 , description="C'est un exemple",createur=exuser, dateheure=datetime(2005,7,15,12,00))
+	exemple=Evenement( nbPlaces=5 , description="C'est un exemple",createur=exuser, sports=Sport.objects.get(id=5),dateheure=datetime(2005,7,15,12,00))
 	exemple.save()
 	print(exemple.nbPlaces)
 	evenements=Evenement.objects.all()

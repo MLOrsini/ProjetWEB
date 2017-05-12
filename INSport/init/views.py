@@ -87,13 +87,13 @@ def init(request):
 	volley.save()
 
 #initialise quelques evenements : 
-	ev1=Evenement(description="evenement bsquash",createur=User.objects.get(id=1),nbPlaces=12,sports=Sport.objects.get(id=12))
+	ev1=Evenement(titre="titre",description="evenement bsquash",createur=User.objects.get(id=1),nbPlaces=12,sports=Sport.objects.get(id=12))
 	ev1.save();
-	ev2=Evenement(description="evenement rugby",createur=User.objects.get(id=1),nbPlaces=12,sports=Sport.objects.get(id=9))
+	ev2=Evenement(titre="titre",description="evenement rugby",createur=User.objects.get(id=1),nbPlaces=12,sports=Sport.objects.get(id=9))
 	ev2.save()
-	ev3=Evenement(description="evenement velo",createur=User.objects.get(id=1),nbPlaces=12,sports=Sport.objects.get(id=4))
+	ev3=Evenement(titre="titre",description="evenement velo",createur=User.objects.get(id=1),nbPlaces=12,sports=Sport.objects.get(id=4))
 	ev3.save()
-	ev4=Evenement(description="evenement badinton",createur=User.objects.get(id=1),nbPlaces=12,sports=Sport.objects.get(id=13))
+	ev4=Evenement(titre="titre",description="evenement badinton",createur=User.objects.get(id=1),nbPlaces=12,sports=Sport.objects.get(id=13))
 	ev4.save()
 
 

@@ -46,6 +46,7 @@ class Evenement(models.Model):
     titre= models.CharField(max_length=20,null=True)
     createur=models.ForeignKey(User, on_delete=models.CASCADE)
     nbPlaces= models.IntegerField()
+    placesRestantes=models.IntegerField(default=0)
     description= models.TextField()
     photoEvt=models.ImageField(upload_to="photoEvt/",default='photoEvt/evtbase.png')
 

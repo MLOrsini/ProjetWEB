@@ -41,10 +41,12 @@ class Sport(models.Model):
 
 class Evenement(models.Model):
     sports=models.ForeignKey(Sport, on_delete=models.CASCADE,default=None) #ManyToManyField permet relation plusieurs a plusieurs (ce qu'on veut ici, un evenement peut avoir +sieurs sport et un sport peut etre affilie a +sieurs evts)
-    dateheure=  models.DateTimeField('Date/heure evenement ',default=datetime.now())
+    date=models.DateField("Date evenement",default=datetime.now())
+    heure=models.CharField(max_length=20,default="Pas heure")
+    titre= models.CharField(max_length=20,null=True)
     createur=models.ForeignKey(User, on_delete=models.CASCADE)
     nbPlaces= models.IntegerField()
-    description= models.CharField(max_length=250)
+    description= models.TextField()
     photoEvt=models.ImageField(upload_to="photoEvt/",default='photoEvt/evtbase.png')
 
 class Adherence(models.Model):

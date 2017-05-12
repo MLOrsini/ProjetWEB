@@ -8,9 +8,13 @@ def Utilisateur(request):
 	utilisateur=request.user.profile
 	sports=Sport.objects.all()
 
-	form = UserForm(request.POST,request.FILES, instance=utilisateur)  # Ne marche pas si on ne met pas instance = utilisateur car le champ id serait vide vu qu'on exclu user du formulaire!
+	form = UserForm(request.POST,request.FILES, instance=utilisateur)
+	# Ne marche pas si on ne met pas instance = utilisateur car le champ id serait vide vu qu'on exclu user du formulaire!
 	if form.is_valid():
-		form.save() 
+		form.save()
+	else:
+		form=UserForm(instance=utilisateur)
+		form.merge_from_initial()
 
 	form2 = AdherenceForm(request.POST, instance=utilisateur)  
 	if form2.is_valid():

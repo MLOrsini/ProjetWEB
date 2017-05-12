@@ -36,7 +36,7 @@
 	<label for="{{ field.auto_id }}">{% if field.field.required %}
 		<span class="ast">*</span>
 	   {% endif %}<span class="f" style="color: #aaa; font-size:18px ;font-weight: normal !important;"> {{ field.label_tag }}</span>
-	<span style="color: #444;""> {% csrf_token %}{{field}}</span><br>
+	<span style="color: #444;""> {% csrf_token %}{{field | default_if_none:_("dfgdfg")}}</span><br>
 	</label><br>
 	{% endfor %}
 

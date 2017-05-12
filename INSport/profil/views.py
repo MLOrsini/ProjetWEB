@@ -24,8 +24,6 @@ def Utilisateur(request):
 	return render(request, 'Utilisateur.html', locals())
 
 
-
-
 def profil(request):
 	return render(request, 'profil.html')
 

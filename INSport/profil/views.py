@@ -1,5 +1,5 @@
 from .forms import UserForm, AdherenceForm, SportForm
-from tableaubord.models import Utilisateur, Sport
+from tableaubord.models import Utilisateur, Sport,Adherence
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -16,9 +16,14 @@ def Utilisateur(request):
 		form=UserForm(instance=utilisateur)
 		form.merge_from_initial()
 
-	form2 = AdherenceForm(request.POST, instance=utilisateur)  
-	if form2.is_valid():
-		form2.save()  
+	#list_exp = AdherenceForm(request.POST, instance=utilisateur)  
+	list_exp= sports
+	sports = request.POST.getlist('choix')
+	print("reter")
+	Adherence.objects.filter(adherent_id=request.user.id).delete()
+	for sport in sports:
+			ad=Adherence(adherent=request.user,sport=Sport.objects.get(pk=sport))
+			ad.save()
 
 	form3 = SportForm(request.POST)  
 	if form3.is_valid():

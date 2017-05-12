@@ -27,7 +27,7 @@
 <ol>
 <article>
 {% for events in context %} 
-	<h3><a href="/ev/{{events.id}}">{{events.description|upper}}</a></h3>
+	<h3><a href="{% url 'detailEvenement' id=events.id %}">{{events.description|upper}}</a></h3>
 </article>
 
 {% if not forloop.last %}

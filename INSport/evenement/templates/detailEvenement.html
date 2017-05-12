@@ -22,7 +22,28 @@
 
 
 {% block header %}
+    
+    <section>
+        <div class=photo>
+            Photo de l'évnènement
+        </div>
+    </section>
 
-<h1>Show Events {{ events.id }} post details</h1>
+    <article>   
+        <div class="description">
+            <h2>{{detail.description | upper}}</h2>
+        </div>
+    </article>
+
+    <section>
+        <div class="information">
+            <h4>Infos sur l'evenement</h4>
+            <li>Orga : ###</li>
+            <li>Heure : ###</li>
+            <li>Lieu : ###</li>
+            <li>Nbr de pratiquant: ###</li>
+            <li>Sport : ###</li>
+        </div>
+    </section>
 
 {% endblock header %}

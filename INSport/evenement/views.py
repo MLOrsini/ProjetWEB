@@ -33,6 +33,5 @@ def evenement(request):
 
 @login_required
 def detailevenement(request,id):
-	return render(request,'detailEvenement.html',{'id':id})
-
-
+	detail=Evenement.objects.get(pk=id)
+	return render(request,'detailEvenement.html',locals())

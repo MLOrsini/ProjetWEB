@@ -20,10 +20,10 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^$',include('accueil.urls'),name='home'),
-    url(r'^evenement/',include('evenement.urls')),
+    url(r'^evenement/',include('evenement.urls'),name='evenement'),
     url(r'^admin/', admin.site.urls),
     url(r'^logout/', include('logout.urls'),name='logout'),
-url(r'^swipe/', include('swipe.urls'),name='swipe'),
+    url(r'^swipe/', include('swipe.urls'),name='swipe'),
     url(r'^login/', include('login.urls'),name='login'),
     url(r'^tableaubord/', include('tableaubord.urls')),
 	url(r'^profil/', include('profil.urls')),

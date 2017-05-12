@@ -107,4 +107,5 @@ def init(request):
 
 
 	sports=Sport.objects.all()
-	return render(request, 'init.html',{'sports':sports})
+	return redirect('Utilisateur')
+	#return render(request, 'init.html',{'sports':sports})

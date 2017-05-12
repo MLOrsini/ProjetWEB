@@ -42,7 +42,7 @@ class Evenement(models.Model):
     createur=models.ForeignKey(User, on_delete=models.CASCADE)
     nbPlaces= models.IntegerField()
     description= models.CharField(max_length=250)
-    #photoEvt=models.ImageField(upload_to="photosEvt/")
+    photoEvt=models.ImageField(upload_to="photoEvt/",default='photoEvt/evtbase.png')
 
 class Adherence(models.Model):
     adherent=models.ForeignKey(User, on_delete=models.CASCADE)

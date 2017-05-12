@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from tableaubord.models import Sport,Evenement,Participation,User
 # Create your views here.
 

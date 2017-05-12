@@ -31,6 +31,7 @@
 	{% for evenement in evenements %}
     			{% if evenement.createur.username == request.user.username %}
       				<p class="text-light">{{ evenement.description }} date:{{evenement.dateheure}} </p>
+                    <img src="{{evenement.photoEvt.url}}">
     			{% endif %}
 				{% empty %}
 					<p class="empty">Pas d'événement créé pour le moment.</p>

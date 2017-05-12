@@ -33,8 +33,11 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 class Sport(models.Model):
-    photo = models.ImageField(upload_to="photoSports/",default='photoSports/cap.jpeg')
-    nom= models.CharField(max_length=20)
+	photo = models.ImageField(upload_to="photoSports/",default='photoSports/cap.jpeg')
+	nom= models.CharField(max_length=20)
+	def __str__(self):
+        	return self.nom
+
 
 class Evenement(models.Model):
     sports=models.ForeignKey(Sport, on_delete=models.CASCADE,default=None) #ManyToManyField permet relation plusieurs a plusieurs (ce qu'on veut ici, un evenement peut avoir +sieurs sport et un sport peut etre affilie a +sieurs evts)

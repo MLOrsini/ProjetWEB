@@ -1,6 +1,6 @@
 from django import forms
 from django import forms
-from .models import Utilisateur
+from .models import Utilisateur, Evenement
 from django.contrib.auth.models import User
 
 class UtilisateurForm(forms.ModelForm):
@@ -23,4 +23,11 @@ class UserForm(forms.ModelForm):
 		if User.objects.filter(username=username).exists():
 			raise forms.ValidationError("That user is already taken")
 		return username
+
+
+
+class createEventForm(forms.ModelForm):
+    class Meta:
+        model = Evenement
+        fields = '__all__'
 

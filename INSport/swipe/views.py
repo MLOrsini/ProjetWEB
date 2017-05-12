@@ -7,14 +7,12 @@ from . import models
 
 @login_required
 def index(request):
-
-
     try:
-        context=Evenement.objects.raw('SELECT tableaubord_evenement.id,tableaubord_evenement.description FROM tableaubord_evenement INNER JOIN tableaubord_adherence ON tableaubord_evenement.sports_id = tableaubord_adherence.sport_id INNER JOIN tableaubord_participation ON tableaubord_evenement.id = tableaubord_participation.evenement_id WHERE tableaubord_adherence.adherent_id=%s AND tableaubord_evenement.sports_id=tableaubord_adherence.sport_id AND tableaubord_participation.participe=-1; ',(request.user.id,))[0]
+        context=Evenement.objects.raw('SELECT tableaubord_evenement.id,tableaubord_evenement.description FROM tableaubord_evenement INNER JOIN tableaubord_adherence ON tableaubord_evenement.sports_id = tableaubord_adherence.sport_id INNER JOIN tableaubord_participation ON tableaubord_evenement.id = tableaubord_participation.evenement_id WHERE tableaubord_adherence.adherent_id=%s AND tableaubord_evenement.sports_id=tableaubord_adherence.sport_id AND tableaubord_participation.participe=-1 AND tableaubord_evenement.placesRestantes>0 AND tableaubord_evenement.createur_id <> %s; ',(request.user.id,request.user.id,))[0]
 
     except IndexError:
         try:
-            context=Evenement.objects.raw('SELECT tableaubord_evenement.id,tableaubord_evenement.description FROM tableaubord_evenement INNER JOIN tableaubord_participation ON tableaubord_evenement.id = tableaubord_participation.evenement_id WHERE tableaubord_participation.participant_id=%s AND tableaubord_participation.participe=-1;',(request.user.id,))[0]
+            context=Evenement.objects.raw('SELECT tableaubord_evenement.id,tableaubord_evenement.description FROM tableaubord_evenement INNER JOIN tableaubord_participation ON tableaubord_evenement.id = tableaubord_participation.evenement_id WHERE tableaubord_participation.participant_id=%s AND tableaubord_participation.participe=-1 AND tableaubord_evenement.placesRestantes>0 AND tableaubord_evenement.createur_id <> %s; ',(request.user.id,request.user.id,))[0]
         except :
             context= None
 
@@ -25,9 +23,11 @@ def create_vote(request, event_id, vote):
     event = Evenement.objects.get(pk=event_id)
     part=Participation.objects.filter(evenement=event, participant= request.user)
 
-    
+    nb=event.placesRestantes-1
     if vote:
         part.update(participe='0')
+        Evenement.objects.filter(pk=event.id).update(placesRestantes=nb)
+        
     else :
         part.update(participe='1')
     return redirect('index')

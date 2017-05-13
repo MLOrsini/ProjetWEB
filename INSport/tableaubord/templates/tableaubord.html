@@ -21,8 +21,9 @@
 
 {% endblock bootstrapCSS %}
 
-{% block header %}
-<h1>Gérez ici vos événements</h1>
+{%block header%}
+<h1 id="ancre">Mes événements créés </h1>
+<h2>Gérez ici vos événements</h2>
 <a href="/tableaubord/createEvent" class="btn btn-lg"style="
     color: #fff;
     background-color: purple;
@@ -34,32 +35,38 @@
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;"  >Show my events </a>
-{% endblock header %}
+
+{%endblock header%}
 
 {% block section %}
-<section class="intro">
 <h2 id="ancre">Mes événements créés : </h2>
-
-
 <ol>
-	{% for evenement in evenements %}
-			
-    			{% if evenement.createur == request.user %}
-				<a href="{% url 'detailEvenement' id=evenement.id %}">
-      				<p class="text-light"><strong>"{{ evenement.titre }}"</strong>  le {{evenement.date}} 
-                    		<div width="50" height="50"><img src="{{evenement.photoEvt.url}}" width="20%" height="20%"></div></p>
-				</a>
-		    		{% if not forloop.last %}
-					<hr> <!-- Sépare par une ligne -->
-				{% endif%}
-    			{% endif %}
-			{% empty %}
-					<p class="empty">Pas d'événement créé pour le moment.</p>
-	{% endfor %}
-
+    {%for evenement in evenements%}
+    {% if evenement.createur == request.user %}
+    <section class="content">
+             <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img class="img-responsive img-rounded center-block" src="{{evenement.photoEvt.url}}" alt="" width="50%" height="40%">
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="{% url 'detailEvenement' id=evenement.id %}">
+                        <h2 class="section-header">{{evenement.titre}}</h2>
+                        </a>
+                        <p class="lead text-muted">{{evenement.description}}</p>
+                    </div>                
+                
+                </div>
+            </div>
+    </section>
+    {%if not forloop.last%}
+        <hr>
+    {%endif%}
+    {%endif%}
+    {%empty%}
+        <p class="empty">Pas d'événement créé pour le moment</p>
+    {%endfor%}
 </ol>
 
-
-</section>
 {% endblock section %}
 

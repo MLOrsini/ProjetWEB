@@ -43,7 +43,7 @@ def createEvent(request):
 		for u in users:
 			p=Participation(participant=u,evenement=ev,participe='-1')
 			p.save()
-
+		return redirect('/tableaubord')
 	return render(request, 'createEvent.html',locals())
 
 

@@ -27,7 +27,8 @@ class UserForm(forms.ModelForm):
 
 
 class createEventForm(forms.ModelForm):
-    class Meta:
-        model = Evenement
-        fields = '__all__'
+	class Meta:
+		model = Evenement
+		#fields = '__all__'
+		exclude = ('createur','placesRestantes',) 
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from tableaubord.models import Evenement,Utilisateur, Sport
+from tableaubord.models import Evenement,Utilisateur, Sport,Participation
 from datetime import datetime
 from .forms import UtilisateurForm,UserForm, createEventForm
 from django.contrib.auth.models import User
@@ -8,10 +8,6 @@ from django.contrib.auth import authenticate, login
 # Create your views here.
 #page d'exemple pour afficher des événements --------------
 def tableaubord(request):
-	exuser=request.user
-	exemple=Evenement( nbPlaces=5 , description="C'est un exemple",createur=exuser, sports=Sport.objects.get(id=5),dateheure=datetime(2005,7,15,12,00))
-	exemple.save()
-	print(exemple.nbPlaces)
 	evenements=Evenement.objects.all()
 	return render(request,'tableaubord.html',{'evenements':evenements})
 
@@ -35,9 +31,19 @@ def sign1(request):
 #Création evenement : ---------------------------------------
 
 def createEvent(request):
-	form=createEventForm(request.POST or None)
+	user=request.user
+	ev=Evenement.objects.all()
+	form=createEventForm(request.POST or None,request.FILES)
 	if form.is_valid():
-		form.save()
+		ev=form.save(commit=False)
+		ev.createur=user
+		ev.placesRestantes=ev.nbPlaces
+		ev.save()
+		users=User.objects.all()
+		for u in users:
+			p=Participation(participant=u,evenement=ev,participe='-1')
+			p.save()
+
 	return render(request, 'createEvent.html',locals())
 
 

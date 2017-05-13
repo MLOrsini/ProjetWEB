@@ -24,7 +24,8 @@
 
 
 <h1> Créer Un Evènement  : </h1>
-<br>
+
+<table width="90%"><tr><td> 
 <form method="post"  action="{% url 'createEvent' %}" enctype="multipart/form-data"  class="a">
     {% for field in form %}
    	<!-- Mettre '*' quand champ requis -->
@@ -35,8 +36,12 @@
 	</label><br>
 	{% endfor %}
 
-    <br><input type="submit" class="btn btn-primary btn-lg" value="Update Event !" />
+</td><td width="20%"></td>
+<td align="right" > 
+
+    <br><input type="submit" class="btn btn-primary btn-lg" value="Create Event !" />
     </form><br><br>
 
+</td></tr></table>
 
 {% endblock header %}

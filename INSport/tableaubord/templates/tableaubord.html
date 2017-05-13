@@ -22,26 +22,44 @@
 {% endblock bootstrapCSS %}
 
 {% block header %}
-<h1>Bonjour voici la page tableau de bord</h1>
+<h1>Gérez ici vos événements</h1>
 <a href="/tableaubord/createEvent" class="btn btn-lg"style="
     color: #fff;
-    background-color: red;
+    background-color: purple;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
-    transition: all .35s;"  >Create Event</a>
+    transition: all .35s;"  >Create Event</a>        <a href="#ancre" class="btn btn-lg"style="
+    color: #fff;
+    background-color: #6D19C1;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;"  >Show my events </a>
 {% endblock header %}
 
 {% block section %}
 <section class="intro">
- <h2>{{request.user.username}}</h2>
+<h2 id="ancre">Mes événements créés : </h2>
+
+
+<ol>
 	{% for evenement in evenements %}
-    			{% if evenement.createur.username == request.user.username %}
-      				<p class="text-light">{{ evenement.description }} date:{{evenement.dateheure}} </p>
-                    <img src="{{evenement.photoEvt.url}}">
+			
+    			{% if evenement.createur == request.user %}
+				<a href="{% url 'detailEvenement' id=evenement.id %}">
+      				<p class="text-light"><strong>"{{ evenement.titre }}"</strong>  le {{evenement.date}} 
+                    		<div width="50" height="50"><img src="{{evenement.photoEvt.url}}" width="20%" height="20%"></div></p>
+				</a>
+		    		{% if not forloop.last %}
+					<hr> <!-- Sépare par une ligne -->
+				{% endif%}
     			{% endif %}
-				{% empty %}
+			{% empty %}
 					<p class="empty">Pas d'événement créé pour le moment.</p>
 	{% endfor %}
+
+</ol>
+
+
 </section>
 {% endblock section %}
 

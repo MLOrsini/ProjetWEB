@@ -1,5 +1,5 @@
 from .forms import UserForm, AdherenceForm, SportForm
-from tableaubord.models import Utilisateur, Sport,Adherence
+from tableaubord.models import Utilisateur, Sport, Adherence, Participation
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -40,7 +40,10 @@ def profil(request):
 #@login_required
 def monProfil(request):
 	if request.user.is_authenticated():
-		return render(request, 'monProfil.html')
+		utilisateur=request.user.profile
+		sports=Sport.objects.all()
+		adherences=Adherence.objects.all()
+		return render(request, 'monProfil.html',locals())
 	return redirect('/login')
 
 

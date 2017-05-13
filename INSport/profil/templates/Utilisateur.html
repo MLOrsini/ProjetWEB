@@ -76,36 +76,6 @@
 
 </td><td width="50%"></td><td align="right">
 
-<!-- 
-<h3> Adhérences : </h3>
-<form action="{% url "Utilisateur" %}" method="post">
-
-	{% for field in form2 %}
-	   {% if field.field.required %}
-		<span class="ast">*</span>
-	   {% endif %} <label for="{{ field.auto_id }}">{{ field.label_tag }}
-	    <span class="formfield"> {% csrf_token %}{{field}}</span><br>
-	    </label>
-	{% endfor %}<br>
-	
-	<input type="submit" class="btn btn-primary btn-lg" value="Update Adherence" />
-</form>
-<br><br>
-
-<h3> Sports : </h3>
-<form action="{% url "Utilisateur" %}" method="post">
-
-	{% for field in form3 %}
-	   {% if field.field.required %}
-		<span class="ast">*</span>
-	   {% endif %} <label for="{{ field.auto_id }}">{{ field.label_tag }}
-	    <span class="formfield"> {% csrf_token %}{{field}}</span><br>
-	    </label><br>
-	{% endfor %}<br>
-	
-	<input type="submit" class="btn btn-primary btn-lg" value="Update Sport" />
-</form> -->
-
 
 
 {% endblock header %}

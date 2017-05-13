@@ -1,6 +1,6 @@
 {% extends 'layouts/base.html' %}
 
-{% block title %}Profil | INSport{% endblock title %}
+{% block title %}My Profile | INSport{% endblock title %}
 
 {% load static %}
 {% block bootstrapCSS %}
@@ -22,9 +22,29 @@
 
 {% block header %}
 
-<h1> Profil </h1>
-<p>Binvenue sur votre profil {{ request.user.username }} ! <br/> Votre email est : {{ request.user.email }} <br/>
-Votre sexe : {{ request.user.profile.sexe }}</p>
+<h1> Mon Profil </h1> 
+<br/><table width="90%"><tr><td>
+<div width="50" height="50"><img src="{{request.user.profile.photo.url}}" width="50%" height="50%"></div>
+<h3> Informations Personnelles : </h3>
+<p>
+<strong>Prénom : </strong>{{ request.user.first_name }} <br/>
+<strong>Nom : </strong>{{ request.user.last_name }} <br/>
+<strong>E-mail : </strong>{{ request.user.email }} <br/>
+<strong>Sexe : </strong>{{ request.user.profile.sexe }}</br></br>
+</td><td width="10%"></td>
+<td> </p>
+<h3>Mes Sports Préférés :</h3>    </br>
+<p>{% for ad in adherences %}
+    			{% if ad.adherent == request.user %}
+				<img src="{{ad.sport.photo.url}}" width="25%" height="25%">     {{ad.sport}}    </br>
+			{% endif %}
+    {% endfor %}
+
+</td></tr></table>
+</td><td width="90%"></td><td align="right">
+</p>
+
+
 
 
 

@@ -9,10 +9,11 @@ from . import models
 def index(request):
     try:
         context=Evenement.objects.raw('SELECT tableaubord_evenement.id,tableaubord_evenement.description FROM tableaubord_evenement INNER JOIN tableaubord_adherence ON tableaubord_evenement.sports_id = tableaubord_adherence.sport_id INNER JOIN tableaubord_participation ON tableaubord_evenement.id = tableaubord_participation.evenement_id WHERE tableaubord_adherence.adherent_id=%s AND tableaubord_evenement.sports_id=tableaubord_adherence.sport_id AND tableaubord_participation.participe=-1 AND tableaubord_evenement.placesRestantes>0 AND tableaubord_evenement.createur_id <> %s; ',(request.user.id,request.user.id,))[0]
-
+        context = Evenement.objects.get(pk=context.id)
     except IndexError:
         try:
             context=Evenement.objects.raw('SELECT tableaubord_evenement.id,tableaubord_evenement.description FROM tableaubord_evenement INNER JOIN tableaubord_participation ON tableaubord_evenement.id = tableaubord_participation.evenement_id WHERE tableaubord_participation.participant_id=%s AND tableaubord_participation.participe=-1 AND tableaubord_evenement.placesRestantes>0 AND tableaubord_evenement.createur_id <> %s; ',(request.user.id,request.user.id,))[0]
+            context = Evenement.objects.get(pk=context.id)
         except :
             context= None
 

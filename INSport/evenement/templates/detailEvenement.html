@@ -22,28 +22,35 @@
 
 
 {% block header %}
-    
+
     <section>
         <div class=photo>
-            Photo de l'évnènement
+            <img class="img-responsive img-rounded center-block" src="{{detail.photoEvt.url}}" alt="" width="40%" height="40%">
         </div>
     </section>
-
-    <article>   
-        <div class="description">
-            <h2>{{detail.description | upper}}</h2>
+    <hr>
+    <table width="180%"> <tr>
+        <td>
+            <article>
+                <h2>{{detail.titre | upper}}</h2>
+            </article>
+            <br>
+            <article>
+                <h4 >{{detail.description}}</h4>
+            </article>
+        </td>
+        <td>
+        <section>
+            <div style="border:1px solid #fff; padding:10px 10px; margin:5px 5px 5px 5px; width: 30%">
+                <h4>Infos sur l'evenement</h4>
+                <ul><i>Orga</i> : {{createurInfo.user.username}}</ul>
+                <ul><i>Date</i> : {{detail.date}}</ul>
+                <ul><i>Heure</i> : {{detail.heure}}</ul>
+                <ul><i>Nbr de pratiquant</i> : {{detail.nbPlaces}}</ul>
+                <ul><i>Sport</i> : <img src="{{photoSport.photo.url}}" alt="" width="15%"></ul>
+            </div>
+        </section>
         </div>
-    </article>
-
-    <section>
-        <div class="information">
-            <h4>Infos sur l'evenement</h4>
-            <li>Orga : ###</li>
-            <li>Heure : ###</li>
-            <li>Lieu : ###</li>
-            <li>Nbr de pratiquant: ###</li>
-            <li>Sport : ###</li>
-        </div>
-    </section>
-
+        </td>
+        </tr></table>
 {% endblock header %}

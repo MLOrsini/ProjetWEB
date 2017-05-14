@@ -23,19 +23,21 @@
 {% block header %}
 
 <h1>My likes</h1>
-
+<br>
 <ol>
-<article>
-{% for events in context %} 
-	<h3><a href="{% url 'detailEvenement' id=events.id %}">{{events.description|upper}}</a></h3>
-</article>
+    <article>
+    {% for events in context %} 
+	   <h3><a href="{% url 'detailEvenement' id=events.id %}" style="color: #9933ff">{{events.description|upper}}</a></h3>
+        {% if not forloop.last %}
+            <hr><!-- Sépare par une ligne -->
+        {% endif%}
 
-{% if not forloop.last %}
-  <hr> <!-- Sépare par une ligne -->
-  {% endif%}
-  {% empty %}
-    <p>Oh non..!! Tu n'as like aucun evenements, vas vite le faire</p>
-{% endfor %}
+    {% empty %}
+
+        <h3>Oh non..!! Tu n'as like aucun evenements, vas vite le faire</h3>
+
+    {% endfor %}
+    </article>
 </ol>
 
 {% endblock header %}

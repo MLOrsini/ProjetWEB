@@ -33,5 +33,12 @@ def evenement(request):
 
 @login_required
 def detailevenement(request,id):
+
 	detail=Evenement.objects.get(pk=id)
+	
+	createurEvt=detail.createur_id
+	createurInfo=Utilisateur.objects.get(pk=createurEvt)
+
+	photoEvt=detail.sports_id
+	photoSport=Sport.objects.get(pk=photoEvt)
 	return render(request,'detailEvenement.html',locals())

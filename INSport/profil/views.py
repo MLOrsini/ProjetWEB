@@ -1,10 +1,11 @@
 from .forms import UserForm, AdherenceForm, SportForm
-from tableaubord.models import Utilisateur, Sport, Adherence, Participation
+from tableaubord.models import Utilisateur, Sport, Adherence, Participation,Evenement
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 
-def Utilisateur(request):
+def Utilisateurs(request):
 	utilisateur=request.user.profile
 	sports=Sport.objects.all()
 
@@ -45,5 +46,42 @@ def monProfil(request):
 		adherences=Adherence.objects.all()
 		return render(request, 'monProfil.html',locals())
 	return redirect('/login')
+
+#@login_required
+def deleteUser(request):
+	if request.user.is_authenticated():
+		use=request.user
+		id = request.user.id
+		try:
+			ads=Adherence.objects.get(adherent_id=use.id)
+			for ad in ads:
+				ad.delete()
+		except: 
+			ads = None;
+
+		try:
+			parts= Participation.objects.get(participant_id=use.id)
+			for part in parts:
+				part.delete()
+		except :
+			parts=None;
+
+		try:
+
+			events= Evenement.objects.get(createur_id=use.id)
+			for event in events:
+				event.delete()
+		except:
+			events = None
+
+		auth.logout(request)
+
+		U=Utilisateur.objects.get(pk=id)
+		U.delete()
+		use.delete()
+
+		return redirect('/')
+	return redirect('/')
+
 
 

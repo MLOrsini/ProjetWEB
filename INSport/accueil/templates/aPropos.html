@@ -1,0 +1,143 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Homepage | INSport{% endblock title %}
+
+{% load static %}
+{% block bootstrapCSS %}
+<!-- Bootstrap Core CSS -->
+        <link href="{% static 'accueil/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+        
+        <link href="{% static 'accueil/custom.css' %}" rel="stylesheet">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Custom Fonts from Google -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+{% endblock bootstrapCSS %}
+
+{% block header %}
+    <!-- Contenu de la page -->
+    <table class="row" height="300px"></table>
+    <h1>INSport: à propos</h1>
+{% endblock header %}
+
+{%block section%}
+<ul>
+    <h2>1. Présentation du projet INSport</h2>
+    <h3><b>Objectif primaire</b></h3>
+     <p> Pour ce projet, nous avons imaginé INSport, une plateforme de collaboration sportive entre les différents étudiants de l’INSA. Nous nous sommes rendu compte qu’il n’existait rien à l’INSA pour organiser des événements sportifs en petits groupes.
+        Avec notre site, notre but est de proposer aux étudiants de l’INSA de se regrouper par centres d’intérêt, par sports pratiqués, afin de discuter, se réunir et s’entraîner ensemble, sur des événements créés par les utilisateurs ou des professionnels.</p>
+    <h3><b>Présentation du site</b></h3>
+    <p>Un utilisateur d'INSport la possibilité de s'inscrire sur le site, et donner des informations personnelles (nom, date de naissance, etc...) les sports qu'il affectionne. Ce fait, il a la possibilité d'accéder à un menu de propositions d'événements créés par les autres utilisateurs. Ces événements lui seront proposés en fonction des sports qu'il a choisi à la création (ou à la modification) de son profil. Il informe alors si il va participer ou non à cet événement avec un système de "like/dislike". Lorsqu'une personne décide de participer à un événement, il  a accès à la page de celui-ci contenant les informations principales (date, créneau horaire, ...) ainsi que son créateur. Il a également la possibilité de créer son propre événement qui sera visible des autres utilisateurs.</p>
+    </br></br>
+
+    <h2>2. Maquette et technologies du site</h2>
+
+    <h3><b>Présentation du BackEnd</b></h3>
+    </br>
+    <h4><b>La base de données:</b></h4>
+    <p><img class="img-responsive center-block" src="/media/DbVisualizer.jpeg" alt="" width="50%" height="40%">
+    </br>
+    </p>
+    </br>
+    <ul>
+
+    <li><p>La table tableaubord_evenement représente un événement créé par un des utilisateurs. Il présente un nombre de places disponibles, le nombre de places restantes (décrémenté quand une personne s'y inscrit),un titre, une description, la date et l'heure de l'événement, le sport concerné et le créateur de l'événement.</p></li></br>
+    <li><p>La table tableaubord_sport contient le nom du sport et la photo du sport</p></li></br>
+    <li><p>La table tableaubord_utilisateur est une extension de la table auth_user (qui représente un utilisateur en django). Elle ajoute aux informations de base d'un utilisateur un sexe, un numéro de téléphone, une date de Naissance et une photo.</p></li></br>
+    <li><p>Les tables tableaubord_participation et tableaubord_adhérence sont des tables entre l'utilisateur et le sport ou l'événement. Elles permettent de ne pas avoir une relation n à n entre l'utilisateur et le sport ou l'événement et le sport</p></li></ul>
+
+    <h4><b>Technologies utilisées:</b></h4>
+    <ul>
+    <li><p>Pour la création de la base de donnée et sa manipulation, nous avons utilisé le framework Python: Django. Celui-ci présente l'avantage de gérer les relations et les requêtes SQL de manière simple, sous forme de Classes. Il a également un fonctionnement de connexions d'utilisateurs déjà implémenté</p></li>
+    </br>
+    <li> <p> Pour la gestion de la base de donnée, nous avons utilisé MySql. Django proposait de base sqlite, cependant sqlite supporte moins une base de données conséquente, avec un grand nombre d'utilisateurs et d'événements. C'est également le plus populaire dans la majorité des sites internet.</p></li></ul>
+
+    </br>
+
+    <h3><b>Présentation du FrontEnd</b></h3>
+    </br>
+    <h4><b>Technologies utilisées:</b></h4>
+    <ul>
+        <li><p>
+            Pour la génération de code html, nous utilisons Django, qui s'occupe cherche les informations dans la base de données pour adapter et générer un code html correspondant. Le système de vues de Django permet facilement d'effectuer des requêtes dans la base de données avant de générer le code en fonction de l'utilisateur par exemple</p>
+        </li>
+        </br>
+        <li><p>
+            Pour la présentation des pages pour créer nos templates de pages html, nous avons utilisé le framework bootstrap. Celui-ci se distingue par son fonctionnement en colonnes, permettant de placer de manière responsive et avec une plus grande liberté les éléments de la page. Il dispose également d'objets déjà implémentés tels que les boutons permettant en changeant quelques attributs de la classe de designer facilement l'objet, sans avoir à beaucoup manipuler la partie CSS. </p>
+        </li>
+    </ul>
+    </br></br>
+
+    <h2>3. Tests effectués et problèmes rencontrés</h2>
+    <h4><b>Outils pour les tests</b></h4>
+    <ul>
+        <p>
+            Pour les tests de notre site, nous utilisons en premier lieu le code Python et le navigateur pour voir si les résultats visuels attendus apparaissent bien lorqu'on affiche notre page. 
+            </br>
+            Pour la base de données, nous utilisons en grande partie le logiciel SequelPro qui permet d'observer et de gérer la base de donnée en direct en se connectant à la socket correspondant. Lorsque certaines opérations n'étaient pas possibles avec ce logiciel, nous utilisions directement l'interface terminal de mysql, permettant d'observer les tables.
+        </p>
+    </ul>
+    <h4><b>Création d'un profil</b></h4>
+    <ul>
+        <p>
+            Après l'implémentation de la base de donnée et du formulaire de création d'un utilisateur, nous avons essayé de créer un profil avec ce formulaire. L'utilisateur est bien créé dans la base de donnée et est connecté. L'entête change alors et lui propose des choix différents, tels que Events (ce qui concerne ses événements), My Profile, ou logout. 
+        </p>
+    </ul>
+    <h4><b>Création d'un événement</b></h4>
+    <ul>
+        <p>
+            De la même manière, nous avons testé le formulaire de création d'un événement. Celui-ci demande bien les informations telles que l'heure et la date de l'événement, le sport, ...</br>
+            Une fois cet événement créé, il peut apparaitre dans la page Manage (accessible depuis l'onglet "Events"). Les informations sont bien stockées dans la base de données, et des tables de participation à l'événement sont créées pour tous les utilisateurs, initialisées à "n'a pas répondu".
+        </p>
+    </ul>
+    <h4><b>Essai de la découverte d'événements</b></h4>
+    <ul>
+        <p>
+            Afin de tester la découverte d'événements, il nous fallait créer plusieurs utilisateurs. Nous avons alors créé un second utilisateur (avec le formulaire). Avec ce second utilisateur, nous avons créé quelques événements. 
+            </br>
+            Nous sommes revenu su le premier utilisateur et avons modifié son profil afin qu'il affectionne des sports correspondant aux événements créés. Nous sommes ensuite allé sur la page de découverte d'événements et avons choisi de participer à certains d'entre eux, et refuser d'autres. 
+            </br>
+            La table Participation entre l'utilisateur et l'événement avait bien été modifié de "n'a pas répondu" à "participe" ou "ne participe pas". 
+            </br>
+            De plus dans la page "My Likes", tous les événements auxquels l'utilisateur participait étaient bien affichés
+        
+        </p>
+    </ul>
+    <h4><b>Problèmes rencontrés</b></h4>
+    <ul>
+        <p>
+            Lors de nos tests, pendant le développement, nous avons souvent été confrontés à des problèmes de base de donnée, de manipulation des tables, d'affichage. Lorsque les problèmes se situaient au niveau de la base de données, nous avions souvent des informations de l'aide au debug de Django, soit lorsque nous migrions les données que nous avions changé, soit lorsque nous tentions de charger une page qui appelait des données de notre base. 
+            </br>
+            Lorsque les problèmes étaient sur la présentation de la page, nous devions chercher à tâtons comment changer les diférents éléments de notre template.
+            </br>
+            Enfin, les forums ont beaucoup aidé notre développement. La recherche d'un problème similaire permet souvent de trouver l'origine de ce problème si quelqu'un d'autre est déjà parvenu à le régler.
+        </p>
+    </ul>
+    <h2>3. Améliorations possibles</h2>
+    <h4><b>Système de notations</b></h4>
+    <ul>
+        <p>
+            Dans le temps imparti, nous n'avons pas pu inclure de système de notations d'un utilisateur. Le principe est qu'en fonction des événements qu'il a créé, les autres utilisateurs pourraient donner 2 notes à un utilisateur: une note de niveau sportif et une note sociale (est-il est agréable?). La note de l'utilisateur serait une moyenne des notes données par tous les utilisateurs lors des événements qu'il a créé.
+            </br>
+            Cela permettrait également de juger la difficulté d'un événement en fonction du niveau sportif de son créateur.
+        </p>
+    </ul>
+    <h4><b>Forum/Questions pour les événements</b></h4>
+    <ul>
+        <p>
+            Une autre fonctionnalité aurait été un système de commentaire pour les événements. Lorsqu'une personne annonce qu'il participe à un événement, il aurait la possibilité de commenter celui-ci afin de poser des questions sur l'heure exacte, le lieu, ...
+        </p>
+    </ul>
+    Je n'ai plus trop d'idées, si vous en avez, sentez vous libres de compléter.
+
+</ul>
+
+
+
+{%endblock section%}

@@ -54,6 +54,14 @@
                         <h2 class="section-header">{{evenement.titre}}</h2>
                         </a>
                         <p class="lead text-muted">{{evenement.description}}</p>
+                        <a href="{% url 'deleteEvent' id=evenement.id %}" class="btn btn-lg"style="
+                            color: #fff;
+                            background-color: purple;
+                            -webkit-transition: all .35s;
+                            -moz-transition: all .35s;
+                            transition: all .35s;" >
+                            Delete Event
+                        </a>
                     </div>                
                 
                 </div>

@@ -46,4 +46,14 @@ def createEvent(request):
 		return redirect('/tableaubord')
 	return render(request, 'createEvent.html',locals())
 
+def deleteEvent(request,id):
+	event = Evenement.objects.get(pk=id)
+	participations=Participation.objects.all()
+	for participation in participations:
+		if (participation.evenement==event):
+			participation.delete()
+	event.delete()
+	ev=Evenement.objects.all()
+	return render(request,'tableaubord.html',{'evenements':ev})
+
 

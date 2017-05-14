@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+from accueil.views import doc
 
 urlpatterns = [
     url(r'^$',include('accueil.urls'),name='home'),
@@ -28,6 +29,7 @@ urlpatterns = [
     url(r'^tableaubord/', include('tableaubord.urls')),
 	url(r'^profil/', include('profil.urls')),
     url(r'^init/',include('init.urls'),name='init'),
+    url(r'^doc/',doc),
 
 ]
 

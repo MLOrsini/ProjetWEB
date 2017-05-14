@@ -1,14 +1,14 @@
 {% extends 'layouts/base.html' %}
 
-{% block title %}Homepage | INSport{% endblock title %}
+{% block title %}A Propos | INSport{% endblock title %}
 
 {% load static %}
 {% block bootstrapCSS %}
 <!-- Bootstrap Core CSS -->
-        <link href="{% static 'accueil/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'tableaubord/bootstrap.min.css' %}" rel="stylesheet">
         <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
         
-        <link href="{% static 'accueil/custom.css' %}" rel="stylesheet">
+        <link href="{% static 'tableaubord/custom.css' %}" rel="stylesheet">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -18,12 +18,13 @@
 
         <!-- Custom Fonts from Google -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
 {% endblock bootstrapCSS %}
 
 {% block header %}
     <!-- Contenu de la page -->
     <table class="row" height="300px"></table>
-    <h1>INSport: à propos</h1>
+    <h1>A propos</h1>
 {% endblock header %}
 
 {%block section%}

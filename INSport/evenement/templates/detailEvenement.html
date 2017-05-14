@@ -22,32 +22,32 @@
 
 
 {% block header %}
-
     <section>
-        <div class=photo>
             <img class="img-responsive img-rounded center-block" src="{{detail.photoEvt.url}}" alt="" width="40%" height="40%">
-        </div>
     </section>
     <hr>
-    <table width="180%"> <tr>
+    <table width="150%"> <tr>
         <td>
             <article>
                 <h2>{{detail.titre | upper}}</h2>
             </article>
             <br>
             <article>
-                <h4 >{{detail.description}}</h4>
+            <div class="name" style=" margin-left: 2px; margin-right: 2px; overflow: auto; height:150px; width: 500px" align="justify">
+                <p>{{ detail.description }}<p></div>
             </article>
         </td>
         <td>
         <section>
-            <div style="border:1px solid #fff; padding:10px 10px; margin:5px 5px 5px 5px; width: 30%">
+    <!--        <div style="border:1px solid #fff; padding:10px 10px; margin:5px 5px 5px 5px; width: 30%"> -->
+
+            <div style="border-left: 1px solid #fff; padding-left: 30px; padding-top: 20px ;height: 250px;">
                 <h4>Infos sur l'evenement</h4>
                 <ul><i>Orga</i> : {{createurInfo.user.username}}</ul>
                 <ul><i>Date</i> : {{detail.date}}</ul>
                 <ul><i>Heure</i> : {{detail.heure}}</ul>
                 <ul><i>Nbr de pratiquant</i> : {{detail.nbPlaces}}</ul>
-                <ul><i>Sport</i> : <img src="{{photoSport.photo.url}}" alt="" width="15%"></ul>
+                <ul><i>Sport</i> : <img src="{{photoSport.photo.url}}" alt="" width="5%"></ul>
             </div>
         </section>
         </div>

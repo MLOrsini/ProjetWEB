@@ -27,7 +27,7 @@
 <ol>
     <article>
     {% for events in context %} 
-	   <h3><a href="{% url 'detailEvenement' id=events.id %}" style="color: #9933ff">{{events.description|upper}}</a></h3>
+	   <h3><a href="{% url 'detailEvenement' id=events.id %}" style="color: #9933ff">{{events.titre|upper}}</a></h3>
         {% if not forloop.last %}
             <hr><!-- Sépare par une ligne -->
         {% endif%}

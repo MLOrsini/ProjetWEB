@@ -15,6 +15,7 @@ class Utilisateur(models.Model):
                            choices=(
                                     ('M', 'Male'),
                                     ('F', 'Female'),
+				    ('O', 'Oui SVP'),
                                 )
                            )
 	tel= models.CharField(max_length=12)#voir pour changer avec des forms (pour ne pas pouvoir mettre de num absurde)

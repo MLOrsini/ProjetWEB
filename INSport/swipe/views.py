@@ -42,4 +42,3 @@ def nice(request, event_id):
 def nope(request, event_id):
     return create_vote(request, event_id, False)
 
-

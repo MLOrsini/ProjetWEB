@@ -1,10 +1,14 @@
 from .forms import UserForm, AdherenceForm, SportForm
 from tableaubord.models import Utilisateur, Sport, Adherence, Participation,Evenement
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 
+
+
+# Page My Profile, où on peut modifier son profil -------------------
 def Utilisateurs(request):
 	utilisateur=request.user.profile
 	sports=Sport.objects.all()
@@ -16,8 +20,6 @@ def Utilisateurs(request):
 	else:
 		form=UserForm(instance=utilisateur)
 		form.merge_from_initial()
-
-	#list_exp = AdherenceForm(request.POST, instance=utilisateur)  
 	list_exp= sports
 	sports = request.POST.getlist('choix')
 	print("reter")
@@ -29,24 +31,32 @@ def Utilisateurs(request):
 	form3 = SportForm(request.POST)  
 	if form3.is_valid():
 		form3.save()  
-
-
 	return render(request, 'Utilisateur.html', locals())
 
 
+
+
+#Page profil, inutile?? -------------------------------------------
 def profil(request):
 	return render(request, 'profil.html')
 
 
+
+
+# Afficher un profil d'utilisateur --------------------------------
 #@login_required
-def monProfil(request):
+def monProfil(request,id):
 	if request.user.is_authenticated():
-		utilisateur=request.user.profile
+		utilisateur=Utilisateur.objects.get(pk=id)
+		user=User.objects.get(pk=id)
 		sports=Sport.objects.all()
 		adherences=Adherence.objects.all()
 		return render(request, 'monProfil.html',locals())
 	return redirect('/login')
 
+
+
+# Supprimer son profil ----------------------------------------------
 #@login_required
 def deleteUser(request):
 	if request.user.is_authenticated():

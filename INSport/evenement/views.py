@@ -9,21 +9,7 @@ from . import models
 
 @login_required
 def evenement(request):
-	#ev=Evenement(description="evenement bsquash",createur=request.user,nbPlaces=12,sports=Sport.objects.get(id=12))
-	#ev.save();
-	#ev2=Evenement(description="evenement rugby",createur=request.user,nbPlaces=12,sports=Sport.objects.get(id=9))
-	#ev2.save()
-	#ev3=Evenement(description="evenement velo",createur=request.user,nbPlaces=12,sports=Sport.objects.get(id=4))
-	#ev3.save()
-	#ev4=Evenement(description="evenement badinton",createur=request.user,nbPlaces=12,sports=Sport.objects.get(id=13))
-	#ev4.save()
-	#sport=Sport.objects.get(id=4)
-	#ad=Adherence(adherent=request.user,sport=sport)
-	#ad.save()
-	#ev=Evenement.objects.all()
-	#for e in ev:
-	#	p=Participation(participant=request.user,evenement=e,participe='-1')
-	#	p.save()
+
 	try:
 		context=Evenement.objects.raw('SELECT tableaubord_evenement.id,tableaubord_evenement.description FROM tableaubord_evenement INNER JOIN tableaubord_participation ON tableaubord_evenement.id = tableaubord_participation.evenement_id WHERE tableaubord_participation.participant_id=%s AND tableaubord_participation.participe=0;',(request.user.id,))
 	except :
@@ -33,8 +19,9 @@ def evenement(request):
 
 @login_required
 def detailevenement(request,id):
-
+	participations=Participation.objects.all()
 	detail=Evenement.objects.get(pk=id)
+	user=User.objects.all()
 	
 	createurEvt=detail.createur_id
 	createurInfo=Utilisateur.objects.get(pk=createurEvt)

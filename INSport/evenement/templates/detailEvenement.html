@@ -43,11 +43,24 @@
 
             <div style="border-left: 1px solid #fff; padding-left: 30px; padding-top: 20px ;height: 250px;">
                 <h4>Infos sur l'evenement</h4>
-                <ul><i>Orga</i> : {{createurInfo.user.username}}</ul>
+                <ul><i>Sport</i> : <img src="{{photoSport.photo.url}}" alt="" width="5%"></ul>
                 <ul><i>Date</i> : {{detail.date}}</ul>
                 <ul><i>Heure</i> : {{detail.heure}}</ul>
-                <ul><i>Nbr de pratiquant</i> : {{detail.nbPlaces}}</ul>
-                <ul><i>Sport</i> : <img src="{{photoSport.photo.url}}" alt="" width="5%"></ul>
+                <ul><i>Organisateur</i> : <a href="{% url 'monProfil' id=createurInfo.user.id %}"> {{createurInfo.user.username}}</a> </ul>
+                <ul><i>Nombre de places total</i> : {{detail.nbPlaces}}</ul>
+                <ul><i>Nombre de places restantes</i> : {{detail.placesRestantes}}</ul>
+                <ul><i>Liste des participants</i> : 
+			<ul> {% for p in participations %}
+				{% if p.evenement == detail %}
+				   {% if p.participe == '0' %}
+					<li><a href="{% url 'monProfil' id=p.participant.id %}"> {{p.participant.username}}</a> </li>
+				   {% endif %}
+				{% endif %}
+				
+			     {% endfor %}
+			</ul>
+		</ul>
+
             </div>
         </section>
         </div>

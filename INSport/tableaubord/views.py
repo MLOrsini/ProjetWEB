@@ -16,6 +16,7 @@ def tableaubord(request):
 
 def sign1(request):
 	form = UserForm(request.POST or None)
+	evenements=Evenement.objects.all()
 	if form.is_valid() :
 		new_user = User.objects.create_user(**form.cleaned_data)
 		username = form.cleaned_data["username"]
@@ -23,7 +24,10 @@ def sign1(request):
 		user = authenticate(username=username, password=password)
 		if user:
 			login(request, user)  # nous connectons l'utilisateur
-			return redirect('init')
+			for e in evenements : #On initialise participations à -1 pour tous les events pour qu'ils soient proposés dans le swipe
+				p=Participation(participant=user,evenement=e,participe='-1')
+				p.save()
+			return redirect('Utilisateur')
 	return render(request, 'sign1.html',locals())
 
 
@@ -46,6 +50,8 @@ def createEvent(request):
 		return redirect('/tableaubord')
 	return render(request, 'createEvent.html',locals())
 
+
+# Suppression evenement : -------------------------------------
 def deleteEvent(request,id):
 	event = Evenement.objects.get(pk=id)
 	participations=Participation.objects.all()

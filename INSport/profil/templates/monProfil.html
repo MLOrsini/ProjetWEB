@@ -1,6 +1,6 @@
 {% extends 'layouts/base.html' %}
 
-{% block title %}My Profile | INSport{% endblock title %}
+{% block title %}Profil de {{user}} | INSport{% endblock title %}
 
 {% load static %}
 {% block bootstrapCSS %}
@@ -22,21 +22,25 @@
 
 {% block header %}
 
-<h1> Mon Profil </h1> 
-<br/><table width="90%"><tr><td>
-<div width="50" height="50"><img src="{{request.user.profile.photo.url}}" width="50%" height="50%"></div>
+
+<table ><font size="66" weight="50" style="text-transform: uppercase;">profil  &nbsp; de &nbsp; {{user}} </font></table></br>
+<table width="90%"><tr><td>
+<div width="50" height="50"><img src="{{request.user.profile.photo.url}}" width="40%" height="40%"></div>
 <h3> Informations Personnelles : </h3>
 <p>
-<strong>Prénom : </strong>{{ request.user.first_name }} <br/>
-<strong>Nom : </strong>{{ request.user.last_name }} <br/>
-<strong>E-mail : </strong>{{ request.user.email }} <br/>
-<strong>Sexe : </strong>{{ request.user.profile.sexe }}</br></br>
+<strong>Prénom : </strong>{{ user.first_name }} <br/>
+<strong>Nom : </strong>{{ user.last_name }} <br/>
+<strong>Sexe : </strong>{{ user.profile.sexe }}</br>
+<strong>E-mail : </strong>{{ user.email }} <br/>
+<strong>Téléphone : </strong>{{ user.profile.tel }} <br/>
+<strong>Date de naissance : </strong>{{ user.profile.dateNaissance }} <br/>
+</br>
 </td><td width="10%"></td>
 <td> </p>
-<h3>Mes Sports Préférés :</h3>    </br>
+<h3> Sports Préférés :</h3>    </br>
 <p>{% for ad in adherences %}
     			{% if ad.adherent == request.user %}
-				<img src="{{ad.sport.photo.url}}" width="25%" height="25%">     {{ad.sport}}    </br>
+				<img src="{{ad.sport.photo.url}}" width="20%" height="20%">     {{ad.sport}}    </br>
 			{% endif %}
     {% endfor %}
 

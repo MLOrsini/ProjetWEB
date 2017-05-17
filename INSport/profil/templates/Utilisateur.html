@@ -1,6 +1,6 @@
 {% extends 'layouts/base.html' %}
 
-{% block title %}Profil | INSport{% endblock title %}
+{% block title %}Mon Profil | INSport{% endblock title %}
 
 {% load static %}
 {% block bootstrapCSS %}
@@ -23,7 +23,7 @@
 {% block header %}
 
 
-<h1> Modifier mon profil </h1>
+        <table ><font size="66" weight="50">M O D I F I E R  &nbsp; M O N &nbsp; P R O F I L  </font></table>
 <br>
 
 <!-- MODIFICATIONS INFOS PERSOS : -->
@@ -66,7 +66,7 @@
     background-color: red;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
-    transition: all .35s;"  >DELETE X</a>   <a href="/profil/monProfil" class="btn btn-lg"style="
+    transition: all .35s;"  >DELETE X</a>   <a href="{% url 'monProfil' id=user.id%}" class="btn btn-lg"style="
     color: #fff;
     background-color: #6D19C1;
     -webkit-transition: all .35s;

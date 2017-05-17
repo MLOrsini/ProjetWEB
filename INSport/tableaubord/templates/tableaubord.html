@@ -1,6 +1,6 @@
 {% extends 'layouts/base.html' %}
 
-{% block title %}Tableau de bord | INSport{% endblock title %}
+{% block title %}Gérer mes événements | INSport{% endblock title %}
 
 {% load static %}
 {% block bootstrapCSS %}
@@ -47,7 +47,7 @@
              <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <img class="img-responsive img-rounded center-block" src="{{evenement.photoEvt.url}}" alt="" width="50%" height="40%">
+                        <img class="img-responsive img-rounded center-block" src="{{evenement.photoEvt.url}}" alt="" width="30%" height="30%">
                     </div>
                     <div class="col-sm-6">
                         <a href="{% url 'detailEvenement' id=evenement.id %}">

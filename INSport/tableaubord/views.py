@@ -23,10 +23,13 @@ def sign1(request):
 		user = authenticate(username=username, password=password)
 		if user:
 			login(request, user)  # nous connectons l'utilisateur
+			events= Evenement.objects.all()
+			for event in events:
+				p=Participation(participant=user,evenement=event,participe='-1')
+				p.save()
+				
 			return redirect('init')
 	return render(request, 'sign1.html',locals())
-
-
 
 #Création evenement : ---------------------------------------
 

@@ -28,7 +28,7 @@ def sign1(request):
 				p=Participation(participant=user,evenement=event,participe='-1')
 				p.save()
 				
-			return redirect('init')
+			return redirect('Utilisateur')
 	return render(request, 'sign1.html',locals())
 
 #Création evenement : ---------------------------------------

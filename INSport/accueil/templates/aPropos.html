@@ -87,7 +87,7 @@
     <h4><b>Création d'un profil</b></h4>
     <ul>
         <p>
-            Après l'implémentation de la base de données et du formulaire de création d'un utilisateur, nous avons essayé de créer un profil avec ce formulaire. L'utilisateur est bien créé dans la base de donnée et est connecté. L'entête change alors et lui propose des choix différents, tels que Events (ce qui concerne ses événements), My Profile, ou logout. 
+            Après l'implémentation de la base de données et du formulaire de création d'un utilisateur, nous avons essayé de créer un profil avec ce formulaire. L'utilisateur est bien créé dans la base de donnée et est connecté. L'entête change alors et lui propose des choix différents, tels que Events (ce qui concerne ses événements), My Profile, ou logout.
         </p>
     </ul>
     <h4><b>Création d'un événement</b></h4>
@@ -120,11 +120,11 @@
             Enfin, les forums ont beaucoup aidé notre développement. La recherche d'un problème similaire permet souvent de trouver l'origine de ce problème si quelqu'un d'autre est déjà parvenu à le régler.
         </p>
     </ul>
-    <h2>3. Améliorations possibles</h2>
-    <h4><b>Système de notations</b></h4>
+    <h2>4. Améliorations possibles</h2>
+    <h4><b>Système de notation</b></h4>
     <ul>
         <p>
-            Dans le temps imparti, nous n'avons pas pu inclure de système de notations d'un utilisateur. Le principe est qu'en fonction des événements qu'il a créé, les autres utilisateurs pourraient donner 2 notes à un utilisateur: une note de niveau sportif et une note sociale (est-il est agréable?). La note de l'utilisateur serait une moyenne des notes données par tous les utilisateurs lors des événements qu'il a créé.
+            Dans le temps imparti, nous n'avons pas pu inclure de système de notation d'un utilisateur. Le principe est qu'en fonction des événements qu'il a créé, les autres utilisateurs pourraient donner 2 notes à un utilisateur: une note de niveau sportif et une note sociale (est-il est agréable?). La note de l'utilisateur serait une moyenne des notes données par tous les utilisateurs lors des événements qu'il a créé.
             </br>
             Cela permettrait également de juger la difficulté d'un événement en fonction du niveau sportif de son créateur.
         </p>
@@ -132,10 +132,15 @@
     <h4><b>Forum/Questions pour les événements</b></h4>
     <ul>
         <p>
-            Une autre fonctionnalité aurait été un système de commentaire pour les événements. Lorsqu'une personne annonce qu'il participe à un événement, il aurait la possibilité de commenter celui-ci afin de poser des questions sur l'heure exacte, le lieu, ...
+            Une autre fonctionnalité aurait été un système de commentaires pour les événements. Lorsqu'une personne annonce qu'il participe à un événement, il aurait la possibilité de commenter celui-ci afin de poser des questions sur l'heure exacte, le lieu, ...
         </p>
     </ul>
-    Je n'ai plus trop d'idées, si vous en avez, sentez vous libres de compléter.
+    <h4><b>Maintenance automatique de la base de données</b></h4>
+    <ul>
+        <p>
+        Nous aurions également voulu que la base de données se mette à jour d'elle-même, et supprime les événements passés automatiquement. En l'état actuel, nous devons lancer la commande "python3 manage.py update_database" pour que les événements passés, ainsi que les participations qui lui sont liées soient supprimés.
+        </p>
+    </ul>
 
 </ul>
 

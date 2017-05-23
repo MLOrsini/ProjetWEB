@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 
 # Page My Profile, où on peut modifier son profil -------------------
+@login_required
 def Utilisateurs(request):
 	utilisateur=request.user.profile
 	sports=Sport.objects.all()
@@ -20,22 +21,23 @@ def Utilisateurs(request):
 	else:
 		form=UserForm(instance=utilisateur)
 		form.merge_from_initial()
-	list_exp= sports
-	sports = request.POST.getlist('choix')
-	print("reter")
-	Adherence.objects.filter(adherent_id=request.user.id).delete()
-	for sport in sports:
-			ad=Adherence(adherent=request.user,sport=Sport.objects.get(pk=sport))
-			ad.save()
+		list_exp= sports
+		sports = request.POST.getlist('choix')
+		if(request.POST.get('choix')):
+			print("reter")
+			Adherence.objects.filter(adherent_id=request.user.id).delete()
+			for sport in sports:
+					ad=Adherence(adherent=request.user,sport=Sport.objects.get(pk=sport))
+					ad.save()
 
-	form3 = SportForm(request.POST)  
-	if form3.is_valid():
-		form3.save()  
+		form3 = SportForm(request.POST)
+		if form3.is_valid():
+			form3.save()
 	return render(request, 'Utilisateur.html', locals())
 
 
 
-
+@login_required
 #Page profil, inutile?? -------------------------------------------
 def profil(request):
 	return render(request, 'profil.html')
@@ -44,7 +46,7 @@ def profil(request):
 
 
 # Afficher un profil d'utilisateur --------------------------------
-#@login_required
+@login_required
 def monProfil(request,id):
 	if request.user.is_authenticated():
 		utilisateur=Utilisateur.objects.get(pk=id)
@@ -57,7 +59,7 @@ def monProfil(request,id):
 
 
 # Supprimer son profil ----------------------------------------------
-#@login_required
+@login_required
 def deleteUser(request):
 	if request.user.is_authenticated():
 		use=request.user
@@ -66,7 +68,7 @@ def deleteUser(request):
 			ads=Adherence.objects.get(adherent_id=use.id)
 			for ad in ads:
 				ad.delete()
-		except: 
+		except:
 			ads = None;
 
 		try:
@@ -92,6 +94,3 @@ def deleteUser(request):
 
 		return redirect('/')
 	return redirect('/')
-
-
-

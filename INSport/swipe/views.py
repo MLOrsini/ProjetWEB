@@ -18,7 +18,7 @@ def index(request):
 
     return render(request, 'index.html',{'context': context})
 
-
+@login_required
 def create_vote(request, event_id, vote):
     event = Evenement.objects.get(pk=event_id)
     part=Participation.objects.filter(evenement=event, participant= request.user)
@@ -27,7 +27,7 @@ def create_vote(request, event_id, vote):
     if vote:
         part.update(participe='0')
         Evenement.objects.filter(pk=event.id).update(placesRestantes=nb)
-        
+
     else :
         part.update(participe='1')
     return redirect('index')
@@ -41,4 +41,3 @@ def nice(request, event_id):
 @login_required
 def nope(request, event_id):
     return create_vote(request, event_id, False)
-

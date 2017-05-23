@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from tableaubord.models import Evenement,Utilisateur, Sport,Participation
+from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from .forms import UtilisateurForm,UserForm, createEventForm
 from django.contrib.auth.models import User
@@ -7,13 +8,10 @@ from django.contrib.auth import authenticate, login
 
 # Create your views here.
 #page d'exemple pour afficher des événements --------------
-def tableaubord(request):
-	evenements=Evenement.objects.all()
-	return render(request,'tableaubord.html',{'evenements':evenements})
+
 
 
 #Création compte : ---------------------------------------
-
 def sign1(request):
 	form = UserForm(request.POST or None)
 	evenements=Evenement.objects.all()
@@ -31,8 +29,15 @@ def sign1(request):
 
 	return render(request, 'sign1.html',locals())
 
-#Création evenement : ---------------------------------------
+@login_required
+def tableaubord(request):
+	evenements=Evenement.objects.all()
+	return render(request,'tableaubord.html',{'evenements':evenements})
 
+
+
+#Création evenement : ---------------------------------------
+@login_required
 def createEvent(request):
 	user=request.user
 	ev=Evenement.objects.all()
@@ -51,6 +56,7 @@ def createEvent(request):
 
 
 # Suppression evenement : -------------------------------------
+@login_required
 def deleteEvent(request,id):
 	event = Evenement.objects.get(pk=id)
 	participations=Participation.objects.all()
@@ -60,5 +66,3 @@ def deleteEvent(request,id):
 	event.delete()
 	ev=Evenement.objects.all()
 	return render(request,'tableaubord.html',{'evenements':ev})
-
-

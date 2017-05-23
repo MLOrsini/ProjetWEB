@@ -32,12 +32,12 @@
 
                     <li> {% if request.user.is_authenticated %}
                         <a href="/profil">Mon Profil</a>
-		                {% else %}<a href="/tableaubord/sign1">Se Connecter</a>{% endif %}
+		                {% else %}<a href="/tableaubord/sign1">S'inscrire</a>{% endif %}
                     </li>
 
 		             <li>
                        {% if request.user.is_authenticated %}<a href="/logout"> Se Déconnecter '{{ request.user.username }}'</a>
-                       {% else %}<a href="/login">Login</a>{% endif %}
+                       {% else %}<a href="/login">Se Connecter</a>{% endif %}
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

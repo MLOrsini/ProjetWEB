@@ -22,14 +22,14 @@
 {% endblock bootstrapCSS %}
 
 {%block header%}
-<h1 id="ancre">Mes événements créés </h1>
+<h1>Mes événements créés </h1>
 <h2>Gérez ici vos événements</h2>
 <a href="/tableaubord/createEvent" class="btn btn-lg"style="
     color: #fff;
     background-color: purple;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
-    transition: all .35s;"  >Créer Evénement</a>        <a href="#ancre" class="btn btn-lg"style="
+    transition: all .35s;"  >Créer Evénement</a>        <a href="#myEvents" class="btn btn-lg"style="
     color: #fff;
     background-color: #6D19C1;
     -webkit-transition: all .35s;
@@ -39,15 +39,15 @@
 {%endblock header%}
 
 {% block section %}
-<h2 id="ancre">Mes événements créés : </h2>
+<h2 id="myEvents">Mes événements créés : </h2>
 <ol>
     {%for evenement in evenements%}
     {% if evenement.createur == request.user %}
     <section class="content">
              <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <img class="img-responsive img-rounded center-block" src="{{evenement.photoEvt.url}}" alt="" width="30%" height="30%">
+                <div class="row" heigth="10%">
+                    <div class="col-sm-6" >
+                        <img class="img-responsive img-rounded center-block" src="{{evenement.photoEvt.url}}" alt="" width="100%" height="100%">
                     </div>
                     <div class="col-sm-6">
                         <a href="{% url 'detailEvenement' id=evenement.id %}">

@@ -7,7 +7,7 @@
 <!-- Bootstrap Core CSS -->
         <link href="{% static 'tableaubord/bootstrap.min.css' %}" rel="stylesheet">
         <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
-        
+
         <link href="{% static 'tableaubord/custom.css' %}" rel="stylesheet">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,14 +46,14 @@
 </td><td width="20%"></td>
 
 
-<td align="right" > 
+<td align="right" >
 
 <!-- MODIFICATIONS SPORTS DE ADHERENCE : -->
 <h3> Choisissez vos sports préférés : </h3>
 <form action="{% url 'Utilisateur' %}" method="post">
 		{% for sport in list_exp %}
 	   <input type="checkbox" name="choix" value="{{sport.id}}"><label>{% csrf_token %}{{sport.nom}}</label>
-	   
+
 	{% endfor %}
 	<br>
 	<input type="submit" class="btn btn-primary btn-lg" value="Update Sports" />
@@ -66,7 +66,7 @@
     background-color: red;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
-    transition: all .35s;"  >DELETE X</a>   <a href="{% url 'monProfil' id=user.id%}" class="btn btn-lg"style="
+    transition: all .35s;"  >SUPPRIMER X</a>   <a href="{% url 'monProfil' id=user.id%}" class="btn btn-lg"style="
     color: #fff;
     background-color: #6D19C1;
     -webkit-transition: all .35s;

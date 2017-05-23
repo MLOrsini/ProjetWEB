@@ -1,13 +1,13 @@
 {% extends 'layouts/base.html' %}
 
-{% block title %}Evenement Likés | INSport{% endblock title %}
+{% block title %}Evenements Likés | INSport{% endblock title %}
 
 {% load static %}
 {% block bootstrapCSS %}
 <!-- Bootstrap Core CSS -->
         <link href="{% static 'tableaubord/bootstrap.min.css' %}" rel="stylesheet">
         <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
-        
+
         <link href="{% static 'tableaubord/custom.css' %}" rel="stylesheet">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,14 +49,14 @@
                 <ul><i>Organisateur</i> : <a href="{% url 'monProfil' id=createurInfo.user.id %}"> {{createurInfo.user.username}}</a> </ul>
                 <ul><i>Nombre de places total</i> : {{detail.nbPlaces}}</ul>
                 <ul><i>Nombre de places restantes</i> : {{detail.placesRestantes}}</ul>
-                <ul><i>Liste des participants</i> : 
+                <ul><i>Liste des participants</i> :
 			<ul> {% for p in participations %}
 				{% if p.evenement == detail %}
 				   {% if p.participe == '0' %}
 					<li><a href="{% url 'monProfil' id=p.participant.id %}"> {{p.participant.username}}</a> </li>
 				   {% endif %}
 				{% endif %}
-				
+
 			     {% endfor %}
 			</ul>
 		</ul>

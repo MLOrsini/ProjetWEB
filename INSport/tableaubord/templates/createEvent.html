@@ -1,13 +1,13 @@
 {% extends 'layouts/base.html' %}
 
-{% block title %}Profil | INSport{% endblock title %}
+{% block title %}Créer Un Evenement | INSport{% endblock title %}
 
 {% load static %}
 {% block bootstrapCSS %}
 <!-- Bootstrap Core CSS -->
         <link href="{% static 'tableaubord/bootstrap.min.css' %}" rel="stylesheet">
         <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
-        
+
         <link href="{% static 'tableaubord/custom.css' %}" rel="stylesheet">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,7 +25,7 @@
 
 <h1> Créer Un Evènement  : </h1>
 
-<table width="90%"><tr><td> 
+<table width="90%"><tr><td>
 <form method="post"  action="{% url 'createEvent' %}" enctype="multipart/form-data"  class="a">
     {% for field in form %}
    	<!-- Mettre '*' quand champ requis -->
@@ -37,9 +37,9 @@
 	{% endfor %}
 
 </td><td width="20%"></td>
-<td align="right" > 
+<td align="right" >
 
-    <br><input type="submit" class="btn btn-primary btn-lg" value="Create Event !" />
+    <br><input type="submit" class="btn btn-primary btn-lg" value="Créer Evénement !" />
     </form><br><br>
 
 </td></tr></table>

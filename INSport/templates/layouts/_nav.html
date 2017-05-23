@@ -18,25 +18,25 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="/">Home</a></li>
-                   
+
 					<li class="dropdown">{% if request.user.is_authenticated %}
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Evénements <span class="caret"></span></a>
 						<ul class="dropdown-menu" aria-labelledby="about-us">
-							<li><a href="/evenement">My Likes</a></li>
-                            <li><a href="/tableaubord">Manage</a></li>
-							<li><a href="/swipe">Browse</a></li>
-							
+							<li><a href="/evenement">Mes Likes</a></li>
+                            <li><a href="/tableaubord">Gérer Evénements </a></li>
+							<li><a href="/swipe">Swipe</a></li>
+
 						</ul>
 					{% endif %}
 					</li>
 
                     <li> {% if request.user.is_authenticated %}
-                        <a href="/profil">My Profile</a>
-		                {% else %}<a href="/tableaubord/sign1">Sign In</a>{% endif %}
+                        <a href="/profil">Mon Profil</a>
+		                {% else %}<a href="/tableaubord/sign1">Se Connecter</a>{% endif %}
                     </li>
 
 		             <li>
-                       {% if request.user.is_authenticated %}<a href="/logout"> Log out '{{ request.user.username }}'</a>
+                       {% if request.user.is_authenticated %}<a href="/logout"> Se Déconnecter '{{ request.user.username }}'</a>
                        {% else %}<a href="/login">Login</a>{% endif %}
                     </li>
                 </ul>

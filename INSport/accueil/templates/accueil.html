@@ -7,7 +7,7 @@
 <!-- Bootstrap Core CSS -->
         <link href="{% static 'accueil/bootstrap.min.css' %}" rel="stylesheet">
         <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
-        
+
         <link href="{% static 'accueil/custom.css' %}" rel="stylesheet">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,7 +25,7 @@
     <table class="row" height="600px"></table>
     <p>INSport, La référence des sites de sport!</p>
     {% if not request.user.is_authenticated %}
-        <a href="/tableaubord/sign1" class="btn btn-primary btn-lg">Engage Now</a>
+        <a href="/tableaubord/sign1" class="btn btn-primary btn-lg">Inscris-toi maintenant !</a>
     {% endif %}
 {% endblock header %}
 
@@ -37,7 +37,7 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <!-- <span class="glyphicon glyphicon-apple" style="font-size: 60px"></span> -->
                     <h2 class="section-heading">Une plateforme de collaboration sportive entre les différents étudiants de l’INSA</h2>
-                    <p class="text-light">Viens faire de la course à pied, natation, de la muscu, du vélo, un tennis, un foot, une partie de bad, un match de volley, ... Pleins d'autres sports</p>
+                    <p class="text-light">Viens faire de la course à pied, natation, de la muscu, du vélo, un tennis, un foot, une partie de badmniton, un match de volley, ... et plein d'autres sports!</p>
                 </div>
             </div>
         </div>
@@ -53,15 +53,15 @@
                 <div class="col-sm-6">
                     {% if request.user.is_authenticated %}
                         <h2 class="section-header">Trouve ton événement!</h2>
-                        <p class="lead text-muted">T'as pas encore trouvé ton bonheur, ce n'est pas possible !! <br \>
-                        Tu n'as pas encore vu tout les évènements ! Va chercher bonheur :)</p>
+                        <p class="lead text-muted">Tu n'as pas encore trouvé ton bonheur ? <br \>
+                        Reviens demain, INSPORT s'enrichit constamment de nouveaux utilisateurs et événements sportifs !</p>
                         <a href="/swipe" class="btn btn-primary btn-lg">Swipe</a>
                     {% else %}
                         <h2 class="section-header">Rejoins nous vite!</h2>
-                        <p class="lead text-muted">Fatigué de courir, nager tout seul ou que jamais personne ne soit disponible pour faire un tennis ou un match de football, etc. Avec notre site, les étudiants à l’INSA pourront se regrouper par centre d’intérêt, par sport pratiqué, afin de discuter, se réunir et s’entraîner ensemble, sur des événements créés par les utilisateurs ou des professionnels.</p>
+                        <p class="lead text-muted">Fatigué de courir, nager tout seul ou que jamais personne ne soit disponible pour faire un tennis ou un match de football avec toi ? Avec notre site, les étudiants de l’INSA se regroupent par centre d’intérêt, par sport pratiqué, afin de discuter, se réunir et s’entraîner ensemble, sur des événements créés par d'autres étudiants.</p>
                         <a href="/tableaubord/sign1" class="btn btn-primary btn-lg">Sign Up</a>
                     {% endif %}
-                </div>                 
+                </div>
             </div>
         </div>
     </section>
@@ -74,14 +74,14 @@
                     <h2 class="section-header">Superior Quality</h2>
                     <p class="lead text-light">Holisticly predominate extensible testing procedures for reliable supply chains. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>
                     <a href="#" class="btn btn-default btn-lg">Test It</a>
-                </div>    
+                </div>
                 <div class="col-sm-6">
                     <img class="img-responsive img-circle center-block" src="{% static 'accueil/logo.png' %}"alt="">
-                </div>            
-                
+                </div>
+
             </div>
         </div>
-    </section>    
+    </section>
 -->
     {% if request.user.is_authenticated %}
         <!-- Promos -->
@@ -89,19 +89,19 @@
             <div class="row promo">
                 <a href="/tableaubord">
                     <div class="col-md-4 promo-item item-1">
-                        <h3>Manage</h3>
+                        <h3>Mes Evénements</h3>
                     </div>
                 </a>
 
                 <a href="/evenement">
                     <div class="col-md-4 promo-item item-2">
-                        <h3>My Likes</h3>
+                        <h3>Mes Likes</h3>
                     </div>
                 </a>
-            
+
                 <a href="/profil">
                     <div class="col-md-4 promo-item item-3">
-                        <h3>My Profile</h3>
+                        <h3>Mon Profil</h3>
                     </div>
                 </a>
             </div>
@@ -112,8 +112,8 @@
  <!--    <section class="content content-3">
         <div class="container">
             <h2 class="section-header"><span class="glyphicon glyphicon-pushpin text-primary"></span><br> Sanity Check</h2>
-            <p class="lead text-muted">Holisticly predominate extensible testing procedures for reliable supply chains. Dynamically innovate resource-leveling customer service for state of the art customer service.</p> 
-                    <a href="#" class="btn btn-primary btn-lg">Check Now</a>               
+            <p class="lead text-muted">Holisticly predominate extensible testing procedures for reliable supply chains. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>
+                    <a href="#" class="btn btn-primary btn-lg">Check Now</a>
             </div>
         </div>
 </section>
